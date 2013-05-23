@@ -2,7 +2,7 @@
 
 pkgname=kerio-firewall-admin
 pkgver=6.7.1.6544
-pkgrel=2
+pkgrel=3
 _pkgmainver=6.7.1
 _pkgsubver=6544
 _wineversion=1.3.11
@@ -32,8 +32,8 @@ md5sums=('83b7adf85da2f2948d0a6629fd30b8db'
          '7b6acf1cb87630b08f9b0758e6ea0bc3'
          'bfeca82192a9520b526f0bb53ad00506'
          '0a016cf1daf2958b236aad4676a2c96e'
-         '4360a0c904fd70305f40a760b871c084'
-         '9cb7600cf331e31dc9109cd77cf67ca4'
+         'e10a5c9abc956c667e889d2d1802eefe'
+         '8f21e8dca28c3f8d68fa6b48a89e6fb6'
         )
 
 if [ "$CARCH" = "x86_64" ]
