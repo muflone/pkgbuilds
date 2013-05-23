@@ -2,7 +2,7 @@
 
 pkgname=kerio-firewall-admin
 pkgver=6.7.1.6544
-pkgrel=2
+pkgrel=1
 _pkgmainver=6.7.1
 _pkgsubver=6544
 _wineversion=1.3.11
@@ -22,7 +22,6 @@ source=("http://download.kerio.com/dwn/kwf/kerio-kwf-admin-${_pkgmainver}-${_pkg
         "${pkgname}-32.png"
         "${pkgname}-48.png"
         "${pkgname}.desktop"
-        "${pkgname}.xml"
        )
 md5sums=('83b7adf85da2f2948d0a6629fd30b8db'
          '7fb1bcabb94592de791705cfc72e6b60'
@@ -32,8 +31,7 @@ md5sums=('83b7adf85da2f2948d0a6629fd30b8db'
          '7b6acf1cb87630b08f9b0758e6ea0bc3'
          'bfeca82192a9520b526f0bb53ad00506'
          '0a016cf1daf2958b236aad4676a2c96e'
-         '4360a0c904fd70305f40a760b871c084'
-         '9cb7600cf331e31dc9109cd77cf67ca4'
+         '100e937ba8aa1b2cb08672b2b8704f28'
         )
 
 if [ "$CARCH" = "x86_64" ]
@@ -84,6 +82,5 @@ package() {
   install -m 644 -D ${pkgname}-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
   install -m 644 -D ${pkgname}-48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
   install -m 644 -D ${pkgname}.desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
-  install -m 644 -D ${pkgname}.xml "$pkgdir/usr/share/mime/packages/${pkgname}.xml"
 }
 
