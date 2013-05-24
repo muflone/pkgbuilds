@@ -2,7 +2,7 @@
 
 pkgname=remmina-plugin-url
 pkgver=1.0.0.0
-pkgrel=2
+pkgrel=3
 _builderver=1.0.0.2
 pkgdesc="A protocol plugin for Remmina to open an URL in an external browser."
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('gtk3' 'remmina' 'hicolor-icon-theme')
 makedepends=('pkg-config' 'cmake')
 optdepends=()
-install=remmina-plugin-url.install
+install=${pkgname}.install
 source=(
   "remmina-plugin-builder_${_builderver}.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/${_builderver}.tar.gz"
   "${pkgname}_${pkgver}.tar.gz::https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz"
