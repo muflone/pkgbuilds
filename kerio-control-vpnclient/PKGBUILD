@@ -1,9 +1,9 @@
 # Maintainer: Muflone  <muflone(at)vbsimple(dot)net>
 
 pkgname=kerio-control-vpnclient
-pkgver=7.2.1.3301
-_pkgmainver=7.2.1
-_pkgsubver=3301
+pkgver=7.2.2.3443
+_pkgmainver=7.2.2
+_pkgsubver=3443
 pkgrel=1
 pkgdesc="Internet access management for corporate networks."
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=(
         "kvpnc"
        )
 md5sums=(
-         'e5eafa63aa8cac5df126bb8e54d07d76'
+         '94c3506913ddc12da78330d6f2fe0ff1'
          '8d127204d493ed05b1e9a397544e5d49'
         )
 
