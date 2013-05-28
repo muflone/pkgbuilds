@@ -1,0 +1,7 @@
+post_install() {
+  echo "To configure Kerio VPN Client launch as root: rc.d configure kvpnc"
+}
+
+pre_remove() {
+  rc.d stop kvpnc
+}

@@ -1,0 +1,64 @@
+# Maintainer: Muflone  <muflone(at)vbsimple(dot)net>
+
+pkgname=kerio-control-vpnclient
+pkgver=7.0.0.896
+_pkgmainver=7.0.0
+_pkgsubver=896
+pkgrel=1
+pkgdesc="Internet access management for corporate networks."
+arch=('i686' 'x86_64')
+url="http://www.kerio.com/control"
+license=('custom:kerio-control-vpnclient')
+options=(!strip)
+install=${pkgname}.install
+depends=(glibc zlib util-linux gcc-libs procps openssl dialog)
+changelog=${pkgname}.changelog
+_libdir=lib
+
+if [ "$CARCH" = "x86_64" ]; then
+  # Add some dependencies from multilib for 32 bit compatibility
+  depends=(lib32-glibc lib32-zlib lib32-util-linux lib32-gcc-libs procps lib32-openssl dialog)
+  _libdir=lib32
+fi
+
+source=(
+        "http://download.kerio.com/dwn/control/kerio-control-vpnclient-${_pkgmainver}-${_pkgsubver}-linux.deb"
+        "kvpnc"
+       )
+md5sums=(
+         '5f580a4c63f79294c5701211a214baeb'
+         '8d127204d493ed05b1e9a397544e5d49'
+        )
+
+build() {
+    # Get binary sources.
+    bsdtar -xvf "$srcdir/data.tar.gz"
+    rm -f "$srcdir/data.tar.gz"
+    rm -f "$srcdir/control.tar.gz"
+    rm -f "$srcdir/debian-binary"
+
+    # Clean Debian package source files
+    rm -r "$srcdir/etc"
+    rm -r "$srcdir/usr/share/lintian"
+    rm -f "$srcdir/data.tar.gz"
+
+    # Removed unneeded files in package specific per Debian
+    cd "$srcdir/usr/share/doc/$pkgname"
+    rm -f "changelog.Debian.gz"
+    rm -f "README"
+    gzip -dfc "EULA.txt.gz" > "EULA.txt"
+}
+
+package() {
+    # Create directories for package
+    install -d "$pkgdir/usr/${_libdir}"
+    install -d "$pkgdir/usr/"{sbin,share/licenses/$pkgname,share/doc/$pkgname}
+    install -d "$pkgdir/etc/rc.d"
+    
+    # Install files in the package
+    install -m 755 -t "$pkgdir/etc/rc.d" kvpnc
+    install -m 755 -t "$pkgdir/usr/sbin" usr/sbin/kvpncsvc
+    install -m 644 -t "$pkgdir/usr/${_libdir}" $srcdir/usr/lib/*
+    install -m 644 -t "$pkgdir/usr/share/doc/$pkgname" $srcdir/usr/share/doc/$pkgname/{Acknowledgments.gz,copyright}
+    install -m 644 -t "$pkgdir/usr/share/licenses/$pkgname" $srcdir/usr/share/doc/$pkgname/EULA.txt
+}
