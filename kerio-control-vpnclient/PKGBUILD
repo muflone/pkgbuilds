@@ -1,10 +1,10 @@
-# Maintainer: Muflone  <muflone(at)vbsimple(dot)net>
-# Contributor: ssv1982 <ssv1982(at)gmail(dot)com>
+# Maintainer: Muflone <webreg@vbsimple.net>
+# Contributor: ssv1982 <ssv1982@gmail.com>
 
 pkgname=kerio-control-vpnclient
-pkgver=7.4.0.4986
+pkgver=7.4.0.5027
 _pkgmainver=7.4.0
-_pkgsubver=4986
+_pkgsubver=5027
 pkgrel=1
 pkgdesc="Kerio Control VPN client for corporate networks."
 arch=('i686' 'x86_64')
@@ -22,12 +22,12 @@ if [ "$CARCH" = "x86_64" ]; then
   _libdir=lib32
 fi
 
-source=("http://download.kerio.com/dwn/control/control-${_pkgmainver}-${_pkgsubver}/kerio-control-vpnclient-${_pkgmainver}-${_pkgsubver}-linux.deb"
+source=("http://download.kerio.com/dwn/control/control-${_pkgmainver}-${_pkgsubver}/kerio-control-vpnclient-${_pkgmainver}-${_pkgsubver}-p1-linux.deb"
         "kvpnc"
         "kvpnc.conf"
         "kvpnc.service"
         "kvpnc.init")
-md5sums=('12fb3b822d851c00ed380e588d949545'
+md5sums=('2410eed8ffe40b8def0f5b304aca9828'
          'c053d47d7e7d35457cfcdd42ff44128f'
          'c11f487e65cef6432dc28969ff220583'
          '8ed74d4bf2191bef2e26439bb237d812'
