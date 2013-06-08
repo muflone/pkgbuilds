@@ -1,9 +1,9 @@
 # Maintainer: Muflone <muflone@vbsimple.net>
 
 pkgname=iseriesaccess
-pkgver=5.4.0.1.2
+pkgver=5.4.0.1.4
 pkgrel=1
-_filever='5.4.0-1.2'
+_filever='5.4.0-1.4'
 pkgdesc="IBM iSeries Access provides a 5250 emulator and others tools for IBM iSeries (formerly known as AS400). This package provides always the latest version."
 arch=(i686 x86_64)
 url="http://www-03.ibm.com/systems/power/software/i/access/linux.html"
@@ -12,7 +12,7 @@ makedepends=(zenity)
 depends=(unixodbc xorg-fonts-75dpi xorg-fonts-100dpi desktop-file-utils libstdc++5)
 optdepends=('rpm: diagnostic package information for cwbmedic')
 provides=(iseriesaccess)
-conflicts=(iseriesaccess)
+conflicts=()
 install=package.install
 source=(
         "file://iSeriesAccess-${_filever}.i386.rpm"
@@ -27,7 +27,7 @@ source=(
         "setup5250.desktop"
        )
 md5sums=(
-         '5587ac7938a9c310d7ee88c3a7ead6ba'
+         'b8a33779147f3d3b6c9c5f14849b26bc'
          '346745e55dca69c03bda3a5e9a6931e1'
          'e5bddef5fef091cc01c222cfafa49a8b'
          '588ba7d61aa2eedeb7c88641b87760f8'
@@ -48,7 +48,7 @@ _bindir='bin'
 if [ "${CARCH}" = 'x86_64' ]
 then
   source+=("file://iSeriesAccess-${_filever}.x86_64.rpm")
-  md5sums+=('e18874a8cbb4c2a0781a0bef545112c3')
+  md5sums+=('90442f3deb69637692a9c887a8bc341c')
   depends+=(lib32-libstdc++5 lib32-libxpm lib32-libxmu lib32-libxp lib32-openmotif lib32-unixodbc)
   _bindir='bin64'
 else
