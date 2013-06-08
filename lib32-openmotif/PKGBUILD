@@ -1,0 +1,22 @@
+# Maintainer: Muflone <muflone@vbsimple.net>
+# Contributor: Andrwe Lord Weber <lord-weber-andrwe [at] andrwe [dot] org>
+# Category: lib
+
+pkgname=lib32-openmotif
+_pkgname32=${pkgname/lib32-/}
+pkgver=2.3.4
+pkgrel=1
+_pkgrel32=2
+pkgdesc="Open Motif for x86_64 architecture"
+arch=('x86_64')
+url="http://www.motifzone.org/"
+license=('GPL')
+groups=('lib32')
+source=("ftp://ftp.archlinux.org/community/os/i686/${_pkgname32}-${pkgver}-${_pkgrel32}-i686.pkg.tar.xz")
+md5sums=('52d3c3c12d5e5fd038251878097cd8ca')
+
+package()
+{
+  install -d "${pkgdir}"/usr/lib32
+  cp -dpR --no-preserve=ownership "${srcdir}"/usr/lib/* "${pkgdir}"/usr/lib32
+}
