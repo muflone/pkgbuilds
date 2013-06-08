@@ -2,7 +2,7 @@
 
 pkgname=iseriesaccess5
 pkgver=5.4.0.1.2
-pkgrel=4
+pkgrel=5
 _filever='5.4.0-1.2'
 pkgdesc="IBM iSeries Access provides a 5250 emulator and others tools for IBM iSeries (formerly known as AS400). This package provides the version 5, compatible with older servers."
 arch=(i686 x86_64)

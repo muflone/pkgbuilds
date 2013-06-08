@@ -4,27 +4,39 @@ do_install() {
   if [ ! -e /usr/lib/libodbc.so.1 ]
   then
     ln -s libodbc.so /usr/lib/libodbc.so.1
-    echo 'Missing libodbc.so.1, added symlink libodbc.so.1 => libodbc.so'
+    echo 'Missing /usr/lib/libodbc.so.1, symlinked libodbc.so.1 => libodbc.so'
   fi
+  if [ $(uname -m) = 'x86_64' -a ! -e /usr/lib32/libodbc.so.1 ]
+  then
+    ln -s libodbc.so /usr/lib32/libodbc.so.1
+    echo 'Missing /usr/lib32/libodbc.so.1, symlinked libodbc.so.1 => libodbc.so'
+  fi
+
   # Add libodbcinst.so.1 symlink
   if [ ! -e /usr/lib/libodbcinst.so.1 ]
   then
     ln -s libodbcinst.so /usr/lib/libodbcinst.so.1
-    echo 'Missing libodbcinst.so.1, added symlink libodbcinst.so.1 => libodbcinst.so'
+    echo 'Missing /usr/lib/libodbcinst.so.1, symlinked libodbcinst.so.1 => libodbcinst.so'
   fi
+  if [ $(uname -m) = 'x86_64' -a ! -e /usr/lib32/libodbcinst.so.1 ]
+  then
+    ln -s libodbcinst.so /usr/lib32/libodbcinst.so.1
+    echo 'Missing /usr/lib32/libodbcinst.so.1, symlinked libodbcinst.so.1 => libodbcinst.so'
+  fi
+
   # Add libXm.so.3 symlink
   if [ $(uname -m) = 'x86_64' ]
   then
     if [ ! -e /usr/lib32/libXm.so.3 ]
     then
       ln -s libXm.so /usr/lib32/libXm.so.3
-      echo 'Missing libXm.so.3, added symlink libXm.so.3 => libXm.so'
+      echo 'Missing /usr/lib32/libXm.so.3, symlinked libXm.so.3 => libXm.so'
     fi
   else
     if [ ! -e /usr/lib/libXm.so.3 ]
     then
       ln -s libXm.so /usr/lib/libXm.so.3
-      echo 'Missing libXm.so.3, added symlink libXm.so.3 => libXm.so'
+      echo 'Missing /usr/lib/libXm.so.3, symlinked libXm.so.3 => libXm.so'
     fi
   fi
 }
