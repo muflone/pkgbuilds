@@ -1,9 +1,9 @@
 # Maintainer: Muflone <muflone@vbsimple.net>
 
 pkgname=iseriesaccess
-pkgver=6.1.0.1.2
+pkgver=7.1.0.1.0
 pkgrel=1
-_filever='6.1.0-1.2'
+_filever='7.1.0-1.0'
 pkgdesc="IBM iSeries Access provides a 5250 emulator and others tools for IBM iSeries (formerly known as AS400). This package provides always the latest version."
 arch=(i686 x86_64)
 url="http://www-03.ibm.com/systems/power/software/i/access/linux.html"
@@ -27,7 +27,7 @@ source=(
         "setup5250.desktop"
        )
 md5sums=(
-         '5bb2a458a32e1c7e7a3ef7d3a2a425c1'
+         'ec70565b14223bad99f9255e8d4318b4'
          '346745e55dca69c03bda3a5e9a6931e1'
          'e5bddef5fef091cc01c222cfafa49a8b'
          '588ba7d61aa2eedeb7c88641b87760f8'
@@ -48,7 +48,7 @@ _bindir='bin'
 if [ "${CARCH}" = 'x86_64' ]
 then
   source+=("file://iSeriesAccess-${_filever}.x86_64.rpm")
-  md5sums+=('261e11ceac32c0ed292fabc37213d9ce')
+  md5sums+=('952a80bd835c8efb187695083adf2e2a')
   depends+=(lib32-libstdc++5 lib32-libxpm lib32-libxmu lib32-libxp lib32-openmotif lib32-unixodbc)
   _bindir='bin64'
 else
