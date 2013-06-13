@@ -2,7 +2,7 @@
 # Contributor: Changaco <me@changaco.net>
 pkgname=mbrola-voices-de2
 pkgver=990106
-pkgrel=2
+pkgrel=3
 _pkgfile=de2
 pkgdesc="A German male voice for the MBROLA synthesizer"
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=('b493d8b258d424ee9159c284b5f00c21')
 package(){
   cd "${srcdir}/${_pkgfile}"
   # Install license file
-  install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # Install files
   for file in de2 de2.txt TEST/*
   do
