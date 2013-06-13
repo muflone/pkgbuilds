@@ -2,7 +2,7 @@
 # Contributor: Changaco <me@changaco.net>
 pkgname=mbrola-voices-br3
 pkgver=000119
-pkgrel=2
+pkgrel=3
 _pkgfile=br3
 pkgdesc="A Brazilian Portuguese male voice for the MBROLA synthesizer"
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=('1ef7df34d66e5b87a97057199d0ec80a')
 package(){
   cd "${srcdir}/${_pkgfile}"
   # Install license file
-  install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # Install files
   for file in br3 br3.txt TEST/*
   do
