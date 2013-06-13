@@ -2,7 +2,7 @@
 # Contributor: Changaco <me@changaco.net>
 pkgname=mbrola-voices-af1
 pkgver=1
-pkgrel=3
+pkgrel=4
 _pkgfile=af1
 pkgdesc="An Afrikaans male voice for the MBROLA synthesizer"
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=('1391c7745585f12f423e0d9bb04fcc5a')
 package(){
   cd "${srcdir}/${_pkgfile}"
   # Install license file
-  install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # Install files
   for file in af1 Af1.txt test/*
   do
