@@ -2,7 +2,7 @@
 # Contributor: Changaco <me@changaco.net>
 pkgname=mbrola-voices-cr1
 pkgver=981028
-pkgrel=2
+pkgrel=3
 _pkgfile=cr1
 pkgdesc="A Croation male voice for the MBROLA synthesizer"
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=('c2a9be187e0c1d6dec17af909f099fdb')
 package(){
   cd "${srcdir}/${_pkgfile}"
   # Install license file
-  install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # Install files
   for file in cr1 cr1.txt TEST/*
   do
