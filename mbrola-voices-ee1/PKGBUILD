@@ -2,7 +2,7 @@
 # Contributor: Changaco <me@changaco.net>
 pkgname=mbrola-voices-ee1
 pkgver=1
-pkgrel=2
+pkgrel=3
 _pkgfile=ee1
 pkgdesc="An Estonian male voice for the MBROLA synthesizer"
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=('38377e171c4a3d3d30e9b214798d3d8c')
 package(){
   cd "${srcdir}/${_pkgfile}"
   # Install license file
-  install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m 644 "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # Install files
   for file in ee1 ee1.txt TEST/*
   do
