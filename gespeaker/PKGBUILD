@@ -1,0 +1,26 @@
+# Maintainer: archtux <antonio dot arias99999 at gmail dot com>
+
+pkgname=gespeaker
+pkgver=0.8.1
+pkgrel=6
+pkgdesc="Gespeaker is a GTK+ frontend for espeak."
+arch=('any')
+url="http://code.google.com/p/gespeaker/"
+license=('GPL2')
+depends=('espeak' 'glade' 'librsvg' 'pygtk' 'python-dbus-common' 'python2' 'pyxdg')
+optdepends=('mbrola')
+source=(http://gespeaker.googlecode.com/files/${pkgname}_${pkgver}_all.tar.gz)
+md5sums=('8849c147d6e15d1dd15866bcd4b1aa3a')
+
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+
+  # Python2 fix
+  sed -i 's_python_python2_' setup.py gespeaker
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+
+  python2 setup.py install --root $pkgdir
+}
