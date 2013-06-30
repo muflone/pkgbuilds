@@ -2,12 +2,12 @@
 
 pkgname=4kvideodownloader
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly download videos from YouTube in high-quality."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-videodownloader"
 license=('custom:eula')
-depends=('qt5-base')
+depends=('qt5-base' 'ffmpeg')
 conflicts=('4kvideodownloader-deb')
 install="$pkgname.install"
 source=(
