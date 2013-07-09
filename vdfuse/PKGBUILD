@@ -1,10 +1,10 @@
 # Maintainer: Muflone <webreg@vbsimple.net>
-# Maintainer: laloch <lalochcz@gmail.com>
+# Contributor: laloch <lalochcz@gmail.com>
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=vdfuse
 pkgver=82a
-pkgrel=5
+pkgrel=6
 pkgdesc="A FUSE module for mounting VirtualBox disk images (VDI/VMDK/VHD) on the host"
 arch=('i686' 'x86_64')
 url="http://forums.virtualbox.org/viewtopic.php?f=26&t=33355"
@@ -14,12 +14,12 @@ makedepends=('pkgconfig')
 install=$pkgname.install
 source=(
         "http://ftp.de.debian.org/debian/pool/main/v/virtualbox/virtualbox_4.1.18-dfsg-2+deb7u1.debian.tar.gz"
-        "http://downloads.sourceforge.net/project/xspect3d/gordstuff/${pkgname}-v${pkgver}.tgz"
-	vdautomount-0.1.py::"http://forums.virtualbox.org/download/file.php?id=2865"
+        "https://github.com/muflone/virtualbox-includes/archive/gordv82a.tar.gz"
+        vdautomount-0.1.py::"http://forums.virtualbox.org/download/file.php?id=2865"
 )
 md5sums=(
          'ed4fe1c9b649a02b3d68343fbd593a92'
-         '7561b2071cde3ac9e3411b5766406c53'
+         '9cc5039ef6f49f3c00f953469ee614de'
          'f7044bcbc724983eb7d8ff60bff4d6e9'
 )
 
@@ -27,7 +27,7 @@ build() {
   cd "${srcdir}/debian/${pkgname}"
   gcc "${pkgname}.c" -o ${pkgname} \
       `pkg-config --cflags --libs fuse` \
-      -I"${srcdir}/vdfuse-v82a/include" \
+      -I"${srcdir}/virtualbox-includes-gordv82a" \
       -Wl,-rpath -Wl,/usr/lib/virtualbox/ \
       -l:/usr/lib/virtualbox/VBoxDD.so \
       -l:/usr/lib/virtualbox/VBoxDDU.so \
