@@ -2,7 +2,7 @@
 # Contributor: Changaco <me@changaco.net>
 pkgname=mbrola-voices-hb1
 pkgver=000308
-pkgrel=1
+pkgrel=2
 _pkgfile=hb1
 pkgdesc="A Hebrew male voice for the MBROLA synthesizer"
 arch=(any)
