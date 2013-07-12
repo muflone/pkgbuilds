@@ -2,8 +2,8 @@
 # Contributor: wido <widomaker2k7@gmail.com>
 # Contributor: Changaco <me@changaco.net>
 pkgname=mbrola-voices-fr2
-pkgver=1
-pkgrel=3
+pkgver=980806
+pkgrel=1
 _pkgfile=fr2
 pkgdesc="A French female voice for the MBROLA synthesizer"
 arch=(any)
@@ -11,7 +11,7 @@ url="http://tcts.fpms.ac.be/synthesis/mbrola.html"
 groups=(mbrola-voices-fr mbrola-voices)
 depends=(mbrola)
 license=(custom)
-source=("http://tcts.fpms.ac.be/synthesis/mbrola/dba/${_pkgfile}/${_pkgfile}.zip")
+source=("http://tcts.fpms.ac.be/synthesis/mbrola/dba/${_pkgfile}/${_pkgfile}-${pkgver}.zip")
 md5sums=('1488ea8ef76e97f1cf8af67963accf42')
 
 package(){
