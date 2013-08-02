@@ -1,8 +1,8 @@
 # Maintainer: Muflone <webreg@vbsimple.net>
 # Contributor: Gino Pezzin <pezzin@gmail.com>
 pkgname=tn5250j
-pkgver=0.7.0
-pkgrel=3
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="5250 terminal emulator for iSeries and AS/400 written in Java"
 url="http://tn5250j.sourceforge.net/"
 arch=('any')
@@ -18,16 +18,16 @@ source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/$
         "http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}-src.zip"
         "${pkgname}"
         "${pkgname}.desktop")
-md5sums=('6f259c17677378f8dd55a3f330388ddb'
-         'b610edbd57b972f4b6e5f430e52d4545'
+md5sums=('06469f44decba77e58a509d48b301c72'
+         '404bac575e7e6cbd5c8510cd7de99935'
          '1be2e2f7e5eb501f292dc0867a210160'
          'ef4e6d672003f21493bc97f00e148b1d')
-sha1sums=('aa701403cfbbf8b2053a9036e6abda09a8687fee'
-          'eead860a11f31ea9a748ee0a34222174b7325365'
+sha1sums=('ede48ff98123acfb646124687e31e973e24ba2ab'
+          'fe41aeeb3ef2206a404ca4646f7ffd81ae030109'
           '01e96d29242bf4dccc2e7a9290ab8e9cf78bd367'
           '9cffa8761334fdde7add6781e6f1a530d38349a2')
-sha256sums=('6df26dc7255292bb063439db7c5d548574aeefe2807c3ddbb2d73a074211a5a1'
-            '1a96dfc79af137f32b583d8a293a7a9cef9b1ce430ce193d7c013075efe9a909'
+sha256sums=('a876eddbf9f74dd3a5a9d2410500a2cab23721247f70c3952fcfb8967ce697db'
+            '2359b8b86f20e6acce9393deb0cf4ca169ead4b5da80ea6a4b370587f1640fae'
             '987cb9f101b8613b5787e50c1369e94f2678248e9a3ddc214e0690412cfa4405'
             '309986e9178cc94a0b518e8b75b551336aeddf4fcdcdc81401dab82fa87bce42')
 noextract=("${pkgname}-${pkgver}-no-depedencies.jar")
