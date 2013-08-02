@@ -2,7 +2,7 @@
 # Contributor: Gino Pezzin <pezzin@gmail.com>
 pkgname=tn5250j
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="5250 terminal emulator for iSeries and AS/400 written in Java"
 url="http://tn5250j.sourceforge.net/"
 arch=('any')
@@ -51,7 +51,7 @@ package() {
   install -m755 -t "${pkgdir}/usr/bin" "${pkgname}"
   # Install java packages
   install -m755 -d "${pkgdir}/usr/share/java/${pkgname}"
-  install -m644 -t "${pkgdir}/usr/share/java/${pkgname}" "${pkgname}-${pkgver}-no-depedencies.jar"
+  install -m644 "${pkgname}-${pkgver}-no-depedencies.jar" "${pkgdir}/usr/share/java/${pkgname}/tn5250j.jar"
 
   cd "${pkgname}-${pkgver}/resources"
   # Install icons
