@@ -1,49 +1,55 @@
+# Maintainer: Muflone <webreg@vbsimple.net>
+# Contributor: SergHeart
 # Contributor: Matthew Bauer <mjbauer95@gmail.com>
-# Patch: SergHeart
-_pkgname=python-gudev
-pkgname=${_pkgname}-git
-pkgver=20130305
-pkgrel=2
+
+pkgname=python2-gudev-git
+_gitname=python-gudev
+pkgver=147.2.1.g780b007
+pkgrel=1
 pkgdesc="Python (PyGObject) bindings to the GUDev library"
 arch=('i686' 'x86_64')
-url="http://github.com/nzjrs/${_pkgname}"
+url="http://github.com/nzjrs/python-gudev"
 license=('LGPL3')
-depends=('python2')
+depends=('systemd' 'python2')
 makedepends=('git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_gitname}")
+conflicts=("${_gitname}")
 replaces=('conduit-svn')
-source=('configure.patch' 'makefile.patch')
-sha1sums=('f12d3a0849205d55b43106d3bc088a89ce21d290'
+source=("git://github.com/nzjrs/python-gudev.git"
+        "configure.patch"
+        "makefile.patch")
+md5sums=('SKIP'
+         '0ab9c9f78c88023b86703d503630da10'
+         '5e610a3a114df81b8598d91e2ed46f30')
+sha1sums=('SKIP'
+          'f12d3a0849205d55b43106d3bc088a89ce21d290'
           '517dd3bbe346b1627745d1dc5affc04786b16ec1')
-_gitroot="git://github.com/nzjrs/${_pkgname}.git"
-_gitname="${_pkgname}"
+sha256sums=('SKIP'
+            '5db0bd5945e6564cb8c602a5f3b63168b85e483eccf286ed294e6df571c3f62b'
+            'e3b6be0db49b4f90d2e89fbb4dff0f194d8514a2d1577ee81a76c5e4dc2e50bc')
+options=('!libtool')
 
-build() {
-  cd "${srcdir}"
-  msg "Connecting to GIT server...."
+pkgver() {
+  cd "${_gitname}"
+  git describe --always | sed 's|-|.|g'
+}
 
-  if [ -d ${_gitname} ] ; then
-    cd ${_gitname} && git pull origin
-    msg "The local files are updated."
-  else
-    git clone ${_gitroot} ${_gitname}
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "${srcdir}/${_gitname}-build"
-  git clone "${srcdir}/${_gitname}" "${srcdir}/${_gitname}-build"
-  cd "${srcdir}/${_gitname}-build"
-
+prepare() {
+  cd "${_gitname}"
   patch -p1 -i ../configure.patch
   patch -p1 -i ../makefile.patch
-  
+}
+
+build() {
+  cd "${_gitname}"
   ./autogen.sh
   ./configure --prefix=/usr PYTHON=python2
-  sed -i '/#include <pygobject\.h>/ i\
-#include <python2.7/Python.h>' "${srcdir}/${_gitname}-build/gudevmodule.c"
-  make || return 1
-  make DESTDIR="${pkgdir}/" install
+  sed -i '/#include <pygobject\.h>/ i#include <python2.7/Python.h>' "gudevmodule.c"
+  make
 }
+
+package() {
+  cd "${_gitname}"
+  make DESTDIR="${pkgdir}" install
+}
+
