@@ -1,5 +1,6 @@
 post_install() {
     xdg-icon-resource forceupdate
+    xdg-desktop-menu forceupdate
 }
 
 post_update() {
