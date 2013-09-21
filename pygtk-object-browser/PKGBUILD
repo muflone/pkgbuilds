@@ -1,7 +1,7 @@
 # Maintainer: Muflone <muflone@vbsimple.net>
 
 pkgname=pygtk-object-browser
-pkgver=0.9.4
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Browse and inspect gtk and gdk objects"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('pygtk' 'xdg-utils')
 source=("http://pygtk-object-browser.googlecode.com/svn/trunk/releases/PyGtkObjectBrowser-${pkgver}.tar.bz2"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('fa86bb5afaa8ac26a689e093d252bbde'
+md5sums=('08593aa4cf6fe5b884ecd8322b87fbc0'
          '7fb90afaa228f25b62deacbdb5a2a1fe'
          '9e1f1a19c5700b726b74aefd255a6bea')
 install="${pkgname}.install"
