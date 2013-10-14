@@ -1,39 +1,34 @@
-# Maintainer: Tom Vincent <http://tlvince.com/contact/>
+# Maintainer: Muflone <webreg(at)vbsimple.net>
+# Contributor: Tom Vincent <http://tlvince.com/contact/>
+
 pkgname=python2-mkdn-git
-pkgver=20120105
+pkgver=2e43ac2
 pkgrel=1
-pkgdesc="Markdown previewer (python, gtk, webkit)"
+pkgdesc="Markdown previewer"
 arch=(any)
 url="https://github.com/rupa/mkdn"
-license=('WTFPL')
-depends=('python2' 'pywebkitgtk' 'python-markdown')
+license=('custom:WTFPL')
+depends=('pywebkitgtk' 'python2-markdown')
 makedepends=('git')
-options=(!emptydirs)
-source=('setup.py')
-md5sums=(a86b4a5949cc4d87383e08ad2af7d43f)
+source=("${pkgname%-*}"::"git://github.com/rupa/mkdn"
+        "license"::"http://www.wtfpl.net/txt/copying/")
+md5sums=('SKIP'
+         '8365d07beeb5f39d87e846dca3ae7b64')
 
-_gitroot=git://github.com/rupa/mkdn.git
-_gitname=$pkgname
+pkgver() {
+  cd "${pkgname%-*}"
+  git describe --always | sed 's|-|.|g'
+}
 
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
+prepare() {
+  cd "${pkgname%-*}"
+  # The filename was changed from mkdn.py to mkdn
+  # the comments in the script will follow the same rule
+  sed -i 's/mkdn.py/mkdn/' mkdn.py
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  mv "mkdn.py" "mkdn"
-  cp "$startdir/setup.py" .
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  install -D -m755 "${pkgname%-*}/mkdn.py" "${pkgdir}/usr/bin/mkdn"
+  install -D -m644 "${srcdir}/license" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
 
-# vim:set ts=2 sw=2 et:
