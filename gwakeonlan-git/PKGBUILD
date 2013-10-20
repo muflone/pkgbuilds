@@ -1,13 +1,13 @@
 # Maintainer: Muflone <muflone@vbsimple.net>
 
 pkgname=gwakeonlan-git
-pkgver=0.5.1.53.g7eb16fb
+pkgver=0.6
 pkgrel=1
 pkgdesc="GTK+ utility to awake machines using the Wake on LAN."
 url="http://gwakeonlan.muflone.com/"
 arch=('any')
 license=('GPL2')
-depends=('gtk3' 'gobject-introspection' 'python2-xdg')
+depends=('gtk3' 'gobject-introspection' 'python2-xdg' 'gtk-update-icon-cache')
 makedepends=('git')
 provides=('gwakeonlan')
 conflicts=('gwakeonlan')
