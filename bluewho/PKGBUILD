@@ -1,17 +1,22 @@
 # Maintainer: Muflone <webreg@vbsimple.net>
 
 pkgname=bluewho
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Information and notification of new discovered bluetooth devices"
 url="http://bluewho.muflone.com/"
 arch=('any')
 license=('GPL2')
-depends=('gtk2' 'python2' 'pygtk' 'libglade' 'librsvg' 'python2-pybluez' 'gtk-update-icon-cache')
+depends=('gtk3' 'gobject-introspection' 'python2-xdg' 'python2-gobject' 'python2-pybluez' 'gtk-update-icon-cache')
+optdepends=('libcanberra: to play notification sound using canberra-gtk-play'
+            'alsa-utils: to play notification sound using aplay'
+            'libpulse: to play notification sound using paplay'
+            'mplayer: to play notification sound using mplayer'
+           )
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('e263d2c77b704514fa5c1c97984cfd9d')
-sha1sums=('79f4070de8de4cdd65d9b97157c2dde3e75072ac')
-sha256sums=('300815d10b4ebfb20c7421fa7fb5365493b4cb456d5f324986f4e2a50a9da05a')
+md5sums=('658c4431e652de5b05296c5d42db4525')
+sha1sums=('4e54bc4302d776a31d01e63e8448f0e7922cb276')
+sha256sums=('4717043cd59206fea7ba2ba1acba908d67f425081bc98e8c2413509479d4f358')
 install="${pkgname}.install"
 
 build() {
@@ -21,8 +26,6 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -d -m 755 "${pkgdir}/usr/bin"
-  ln -s "/usr/share/bluewho/src/bluewho.py" "${pkgdir}/usr/bin/bluewho"
   python2 setup.py install --optimize=1 --root "${pkgdir}"
 }
 
