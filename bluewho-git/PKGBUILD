@@ -1,7 +1,7 @@
 # Maintainer: Muflone <webreg@vbsimple.net>
 
 pkgname=bluewho-git
-pkgver=0.1.114.g84a62ea
+pkgver=0.1.116.g30d2502
 pkgrel=1
 pkgdesc="Information and notification of new discovered bluetooth devices"
 url="http://bluewho.muflone.com/"
