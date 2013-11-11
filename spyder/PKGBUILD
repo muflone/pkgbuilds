@@ -3,8 +3,8 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=spyder
-pkgver=2.2.4
-pkgrel=2
+pkgver=2.2.5
+pkgrel=1
 pkgdesc='Scientific PYthon Development EnviRonment providing MATLAB-like features.'
 arch=('any')
 url='http://code.google.com/p/spyderlib/'
@@ -23,11 +23,11 @@ optdepends=('python2-pylint: powerful code analysis'
             'python2-matplotlib: 2D/3D plotting')
 source=("http://spyderlib.googlecode.com/files/${pkgname}-${pkgver}.zip" 
         "pylint.patch")
-md5sums=('6a411564e2311d4b5e082f0f3875d224'
-         '23bd324d9e8f9e92b4038d0ccc488765')
+md5sums=('1c9aa650dae9f883616e917803f8a3be'
+         '3fe95915036634841b619670ad947e96')
 
 prepare() {
-  patch -p0 < pylint.patch
+  patch -p0 < "pylint.patch"
 }
 
 build() {
@@ -38,10 +38,11 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  install -D -m644 "spyderlib/__init__.py" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  #Icon
-  sed -i -e '$a\Icon=spyder' "scripts/${pkgname}.desktop"
+  # Install license file
+  install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Install icon and desktop file
   install -D -m644 "scripts/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -D -m644 "spyderlib/images/spyder.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+  # Remove useless spyder_win_post_install script
   rm -f "${pkgdir}/usr/bin/spyder_win_post_install.py"
 }
