@@ -2,7 +2,7 @@
 # Contributor: ssv1982 <ssv1982@gmail.com>
 
 pkgname=kerio-control-vpnclient
-pkgver=8.2.1.1461
+pkgver=8.2.2.1619
 _pkgmainver=${pkgver%.*}
 _pkgsubver=${pkgver##*.}
 pkgrel=1
@@ -27,17 +27,17 @@ source=("http://download.kerio.com/dwn/control/control-${_pkgmainver}-${_pkgsubv
         "kvpnc.conf"
         "kvpnc.service"
         "kvpnc.init")
-md5sums=('a9cc298fa455d3d59c48e3bf36befce0'
+md5sums=('3d1570a8c8b0b9eab7c6863b528ab671'
          'c053d47d7e7d35457cfcdd42ff44128f'
          'c11f487e65cef6432dc28969ff220583'
          '8ed74d4bf2191bef2e26439bb237d812'
          '0da68368f0c230c10d96b2f12489c2c1')
-sha1sums=('bc26a9adbd975bca48a348c9d453c9afe3465d20'
+sha1sums=('bd1021d0ee5596f1e0a778c5768114295fd5c690'
           '71fdef2be99ed4236ddb067f4599be8225fce24f'
           'b356167507fa98ca4c68d7edc3a79ba04d0967e8'
           'b56843b896320bc015085c4a6b3d14e24db805e1'
           'a3cbacd0013cb09d082a7b2066df46a96231b50a')
-sha256sums=('69fae048a7baea0d59a320ca221233c412e6032e8e3fb998424722c239922aa2'
+sha256sums=('202016e574fa72d0a5d94ffb6ea1673881d3934305af2365f6eb8de3d128fb58'
             '8725cb7067f0640e75f6ac4d1894b067bca577fc0f1db1fdcedc937e8ca5f9a7'
             '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
             'b35dad89642439811c6a08a0a7110fafc1224c9c3ee87b06f73952e9dff2e679'
