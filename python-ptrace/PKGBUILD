@@ -2,15 +2,15 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=python-ptrace
-pkgver=0.6.3
-pkgrel=3
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="Python binding of ptrace library to trace processes and syscalls."
 url="http://bitbucket.org/haypo/python-ptrace"
 arch=('any')
 license=('GPL2')
 depends=('python')
 source=("http://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('55b710e5c2a86862a092b2d0de9f7c59')
+md5sums=('d02900a25ceae695134a3ad4ec4c10d9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
