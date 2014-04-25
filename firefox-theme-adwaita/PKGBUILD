@@ -3,19 +3,19 @@
 
 pkgname=firefox-theme-adwaita
 pkgver=29.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adwaita theme for Firefox (Matches the default Gnome Shell theme)"
 url="https://addons.mozilla.org/en-US/firefox/addon/adwaita/"
 arch=('any')
 license=('MPL')
 depends=("firefox")
 makedepends=('unzip')
-source=("${pkgname}-${pkgver}.xpi"::"https://addons.mozilla.org/firefox/downloads/file/254054/gnome_3-${pkgver}-fx.xpi")
+source=("https://github.com/gnome-integration-team/firefox-gnome/releases/download/${pkgver}/gnome-firefox-theme-${pkgver}.xpi")
 md5sums=('7d00cc5ff6a34c97e3f177a41e146666')
-noextract=("${pkgname}-${pkgver}.xpi")
+noextract=("gnome-firefox-theme-${pkgver}.xpi")
 
 prepare() {
-  unzip -qo "${pkgname}-${pkgver}.xpi" -d "${pkgname}-${pkgver}"
+  unzip -qo "gnome-firefox-theme-${pkgver}.xpi" -d "${pkgname}-${pkgver}"
 }
 
 package() {
