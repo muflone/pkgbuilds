@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=gptrace
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Trace the activities of an external application"
 url="http://url.muflone.com/gptrace"
@@ -9,9 +9,9 @@ arch=('any')
 license=('GPL2')
 depends=('gtk3' 'gobject-introspection' 'python2-xdg' 'python2-gobject' 'python2-ptrace' 'gtk-update-icon-cache')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('f5d4ed1ef79925d2e8a409daf2c7c328')
-sha1sums=('41ade92825419f484e2a5294750983eac3973949')
-sha256sums=('bf7a6484a8b73d3aaaef8b7d7d82234521605a81b8a7e126a4057c2b3ea65fa3')
+md5sums=('5a80f2584b2f1ddb6737dd8789ea2bfb')
+sha1sums=('aed7e3c3e2f7b948123208850d58719249d2120e')
+sha256sums=('a734242298347284440ff624806069a78544837d48aab63244d6fcb812f39649')
 install="${pkgname}.install"
 
 build() {
