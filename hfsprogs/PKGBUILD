@@ -6,7 +6,7 @@
 
 pkgname=hfsprogs
 pkgver=332.25
-pkgrel=11
+pkgrel=12
 pkgdesc="HFS/HFS+ user space utils" 
 arch=('i686' 'x86_64')
 depends=('libbsd' 'openssl')
@@ -19,21 +19,19 @@ source=("http://ftp.de.debian.org/debian/pool/main/h/hfsprogs/${pkgname}_${pkgve
 sha256sums=('74c9aeca899ed7f4bf155c65fc45bf0f250c0f6d57360ea953b1d536d9aa45e6'
             '62d9b8599c66ebffbc57ce5d776e20b41341130d9b27341d63bda08460ebde7c'
             '3bce072b604e0e9baa2151bff91b40915253bfb6d9d9e37445080f526ad486e2'
-            'faaf8c08c6020fe7347354b85c57d43a00d6cd547075139c466fb0a787411fc7')
+            '4d9e36010c8bf2b2186ff22b2b30654fb7156bfbbcff0fece717f851f316b6a4')
 
 prepare() {
   # To build the package more than once you have to clear your sources tree after first build
   # or to use the same sources without patching them again (makepkg -e)
   #
-  # Apply debian patches
+  # Apply patches
   cd "diskdev_cmds-${pkgver}"
-  for patch in ../debian/patches/*.patch
+  for patch in ../debian/patches/*.patch ../makefile.patch
   do
     msg2 "Applying patch ${patch##*/}..."
     patch -Np1 -i "${patch}"
   done
-  msg2 "Applying patch makefile.patch..."
-  patch -Np0 -i "../makefile.patch"
 }
 
 build() {
