@@ -2,7 +2,7 @@
 # Contributor: Gino Pezzin <pezzin@gmail.com>
 pkgname=tn5250j
 pkgver=0.7.3
-pkgrel=4
+pkgrel=5
 pkgdesc="5250 terminal emulator for iSeries and AS/400 written in Java"
 url="http://tn5250j.sourceforge.net/"
 arch=('any')
@@ -20,7 +20,7 @@ source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/$
         "${pkgname}.desktop")
 sha256sums=('15bc1c4f631f491c4a6e5cde2b602134750959dd37e7523a3d24b879daadcee3'
             '68e680efbe37c819f7ea14c5efe1c57a9fc3123880df7ae4c8fffb0cf55d4246'
-            'b10d727361a87939b937273d1bd326a32f67c36cb6071e607972e25fb429a170'
+            '02ae481923b7f94b4852a5f706b97086245d2fa37aed4c5934dd77d38cf0d5de'
             'ba0fc30eab33ead695cffdba329dbadf8d05f67adac9a34fa905827a60421fcd')
 noextract=("${pkgname}-${pkgver}-no-depedencies.jar")
 install="${pkgname}.install"
