@@ -2,7 +2,7 @@
 # Contributor: ssv1982 <ssv1982@gmail.com>
 
 pkgname=kerio-control-vpnclient
-pkgver=8.3.1.2108
+pkgver=8.3.2.2261
 _pkgmainver=${pkgver%.*}
 _pkgsubver=${pkgver##*.}
 pkgrel=1
@@ -26,7 +26,7 @@ source=("http://download.kerio.com/dwn/control/control-${_pkgmainver}-${_pkgsubv
         "kvpnc"
         "kvpnc.conf"
         "kvpnc.service")
-sha256sums=('b089b8ae5a8cd4d1625ca02b3da5aee20018cc4b31aeff6728aeb7fe0ab2e0b9'
+sha256sums=('3abc733cfdc626c235d0986c4cf9580043c66a0f9549b7aacc8551961a03d148'
             '8725cb7067f0640e75f6ac4d1894b067bca577fc0f1db1fdcedc937e8ca5f9a7'
             '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
             'b35dad89642439811c6a08a0a7110fafc1224c9c3ee87b06f73952e9dff2e679')
