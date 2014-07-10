@@ -2,7 +2,7 @@
 # Contributor: ssv1982 <ssv1982@gmail.com>
 
 pkgname=kerio-control-vpnclient
-pkgver=8.2.2.1963
+pkgver=8.3.0.1988
 _pkgmainver=${pkgver%.*}
 _pkgsubver=${pkgver##*.}
 pkgrel=1
@@ -22,11 +22,11 @@ if [ "$CARCH" = "x86_64" ]; then
   _libdir=lib32
 fi
 
-source=("http://download.kerio.com/dwn/control/control-${_pkgmainver}-${_pkgsubver}/kerio-control-vpnclient-${_pkgmainver}-${_pkgsubver}-p2-linux.deb"
+source=("http://download.kerio.com/dwn/control/control-${_pkgmainver}-${_pkgsubver}/kerio-control-vpnclient-${_pkgmainver}-${_pkgsubver}-linux.deb"
         "kvpnc"
         "kvpnc.conf"
         "kvpnc.service")
-sha256sums=('7ce9a584f38c5f00ddb24b1213988d53a56a403f200c6af8b988ab07789894d2'
+sha256sums=('d5298fca5e5d25f87254c11025a3fddb6ebc99d4b1ff4c3132fb563a1f5176bf'
             '8725cb7067f0640e75f6ac4d1894b067bca577fc0f1db1fdcedc937e8ca5f9a7'
             '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
             'b35dad89642439811c6a08a0a7110fafc1224c9c3ee87b06f73952e9dff2e679')
