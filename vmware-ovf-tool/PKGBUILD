@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=vmware-ovftool
-pkgver=3.5.0.1274719
+pkgver=3.5.1.1747221
 pkgrel=1
 pkgdesc="VMware Open Virtualization Format tool"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ _pkgsubver=${pkgver##*.}
 if [ "$CARCH" = "x86_64" ]
 then
   _pkgarch=$CARCH
-  sha256sums=('e11e7c726658f6c41654d7e0ef1b5b2d45aa436e9f36ac39a994aaf70f343c4f')
+  sha256sums=('fdcae778c7eb9b344e5879ecd1f73763d74e0de2d6dd128bba6b5ce825d75b58')
 else
   _pkgarch=i386
-  sha256sums=('cc58e04aef3b608795cc788a196be6786bf173c2b2c05ffbea16ff50fbad68c8')
+  sha256sums=('e011b8b8139d08d86226f001fdd57cd7820967a2bd525ce6764d498e6ddac7f1')
 fi
 source=("file://VMware-ovftool-${_pkgmainver}-${_pkgsubver}-lin.${_pkgarch}.bundle")
 
