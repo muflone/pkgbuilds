@@ -1,9 +1,8 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=vmware-ovftool
-pkgver=3.5.1.1747221
+pkgver=3.5.2.1880279
 pkgrel=1
-pkgdesc="VMware Open Virtualization Format tool"
 arch=('i686' 'x86_64')
 url="https://www.vmware.com/support/developer/ovf/"
 license=('custom:vmware')
@@ -14,12 +13,13 @@ _pkgsubver=${pkgver##*.}
 if [ "$CARCH" = "x86_64" ]
 then
   _pkgarch=$CARCH
-  sha256sums=('fdcae778c7eb9b344e5879ecd1f73763d74e0de2d6dd128bba6b5ce825d75b58')
+  sha256sums=('777563271cc284cf873b9100ba3a05d93ed6885ec76ff1497d227a21d7dbd0d5')
 else
   _pkgarch=i386
-  sha256sums=('e011b8b8139d08d86226f001fdd57cd7820967a2bd525ce6764d498e6ddac7f1')
+  sha256sums=('7fb6a138c04a011ca9e582634d22f0bcc77afc27d270699c5dc4fc0d75330be6')
 fi
 source=("file://VMware-ovftool-${_pkgmainver}-${_pkgsubver}-lin.${_pkgarch}.bundle")
+pkgdesc="VMware Open Virtualization Format tool (place the file VMware-ovftool-${_pkgmainver}-${_pkgsubver}-lin.YOUR-ARCH.bundle in the same directory of the PKGBUILD)"
 
 build() {
   rm -rf "${srcdir}/build"
