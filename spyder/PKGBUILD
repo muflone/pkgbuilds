@@ -1,10 +1,11 @@
+# $Id: PKGBUILD 123535 2014-12-06 13:10:06Z muflone $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Francois Boulogne <fboulogne@april.org>
 # Contributor: TDY <tdy@gmx.com>
 
 pkgbase='spyder'
 pkgname=('spyder' 'spyder3')
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Scientific PYthon Development EnviRonment providing MATLAB-like features.'
 makedepends=('python2-setuptools' 'python-setuptools' 'python-sphinx' 'python2-sphinx')
@@ -15,11 +16,12 @@ install="${pkgbase}.install"
 source=("https://bitbucket.org/spyder-ide/spyderlib/downloads/${pkgbase}-${pkgver}.zip"
         "pylint2.patch"
         "python2.patch")
-sha256sums=('8804242eb0f308d39e26e69f13298f02edf44dc208e0c49979b5cf7d240530ef'
+sha256sums=('f4f71ffe8590ffa8813622efb6705e52897552624726df317e0589ae121240bb'
             'f8836efa74ac9b8fce389a2708bb253083bbe042aabec124659839d5b3e167dd'
             '05f194438176cfa03cb76f38e5f64723b72a39d6771d5d4a927adf07a0ec67f1')
 
 package_spyder() {
+  pkgdesc='Scientific PYthon Development EnviRonment providing MATLAB-like features for Python 2.x series.'
   depends=('python2-pyqt4' 'python2-pyflakes' 'python2-pyzmq' 'python2-pygments' 'gtk-update-icon-cache')
   optdepends=('python2-pylint: powerful code analysis'
               'ipython2: enhanced Python interpreter'
@@ -49,6 +51,7 @@ package_spyder() {
 }
 
 package_spyder3() {
+  pkgdesc='Scientific PYthon Development EnviRonment providing MATLAB-like features for Python 3.x series.'
   depends=('python-pyqt4' 'python-pyflakes' 'python-pyzmq' 'python-pygments' 'gtk-update-icon-cache')
   optdepends=('python-pylint: powerful code analysis'
               'ipython: enhanced Python interpreter'
