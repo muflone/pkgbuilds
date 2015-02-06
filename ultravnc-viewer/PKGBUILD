@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=ultravnc-viewer
-pkgver=1.2.0.4
+pkgver=1.2.0.5
 _pkgver=${pkgver::-2}
 pkgrel=1
 pkgdesc="A powerful VNC Client with a lot of features, compatible with Windows' UltraVNC servers"
@@ -19,7 +19,7 @@ source=("http://www.uvnc.eu/download/${pkgver//./}/Uvnc_${pkgver//./}_bin.zip"
         "${pkgname}-256.png"
         "${pkgname}.desktop"
         "${pkgname}-listen.desktop")
-sha256sums=('66ff27405bfc6efbcee2e15990643241dc94d9b30d84889b384775518a3e508a'
+sha256sums=('b1760a91ca0d53777e65942185f94c5e0a3a5c7f20cb5fd84c2503f2d12d039e'
             '1738d173c1cb89e46207c70fda6a36b7eeea9ba31b469a0cce10bbd9e8deb9b0'
             '5386feaf65fff389db4e4e30950f97d64803815b1e1a219d45bf41c2bde45e21'
             '098876231f8006bb89fc54986175ec6d938fae2c9e4a6dafe9b5c9d36f7fb3a2'
