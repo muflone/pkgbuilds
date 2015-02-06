@@ -1,16 +1,16 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=ultravnc-viewer
-pkgver=1.1.9.6
+pkgver=1.2.0.1
 _pkgver=${pkgver::-2}
-pkgrel=2
+pkgrel=1
 pkgdesc="A powerful VNC Client with a lot of features, compatible with Windows' UltraVNC servers"
 arch=('any')
 url="http://www.uvnc.com"
 license=('GPL')
 depends=('wine' 'gtk-update-icon-cache')
 makedepends=('unzip')
-source=("http://support1.uvnc.com/download/${pkgver//.}/UVNC_${_pkgver//./_}_w2k_X86.zip"
+source=("http://www.uvnc.eu/download/${pkgver//./}/vncviewer${pkgver//./}_portable.zip"
         "${pkgname}-16.png"
         "${pkgname}-24.png"
         "${pkgname}-32.png"
@@ -19,7 +19,7 @@ source=("http://support1.uvnc.com/download/${pkgver//.}/UVNC_${_pkgver//./_}_w2k
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-listen.desktop")
-sha256sums=('b5fc2ea3693aed42d5abb644f80a2f165087cb25c128e17eae0c611c470609fd'
+sha256sums=('94951b0b39fe0f026b2c743f600e1eb4594ce0c02ff3d6c89860c7b9c2f3f257'
             '5386feaf65fff389db4e4e30950f97d64803815b1e1a219d45bf41c2bde45e21'
             '098876231f8006bb89fc54986175ec6d938fae2c9e4a6dafe9b5c9d36f7fb3a2'
             '48025bb333be1ab9ebf875ced00d98b5701bbd81bad361d34712bc00b2e3c0df'
@@ -32,7 +32,7 @@ install="${pkgname}.install"
 
 package() {
   # Install binary files
-  install -m 644 -D "${srcdir}/w2k_X86/installer/vncviewer.exe" "${pkgdir}/usr/share/${pkgname}/vncviewer.exe"
+  install -m 644 -D "${srcdir}/vncviewer${pkgver//./}_portable.exe" "${pkgdir}/usr/share/${pkgname}/vncviewer.exe"
   # Install startup script
   install -m 755 -D "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   # Install icons
