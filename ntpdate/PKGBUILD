@@ -3,7 +3,7 @@
 
 pkgname=ntpdate
 _pkgname=ntp-dev
-_pkgver=4.2.7p444
+_pkgver=4.2.7p483
 pkgver=${_pkgver/p/.p}
 pkgrel=1
 pkgdesc='Client for the Network Time Protocol (NTP)'
@@ -11,14 +11,14 @@ url='http://www.ntp.org/'
 license=('custom')
 arch=('i686' 'x86_64')
 makedepends=('perl-html-parser')
-#depends=('openssl' 'libcap' 'libedit')
+depends=('openssl')
 conflicts=('ntp' 'ntpdate-dev')
 backup=('etc/conf.d/ntpdate.conf')
 source=("http://archive.ntp.org/ntp4/${_pkgname}/${_pkgname}-${_pkgver}.tar.gz"
         "${pkgname}.conf"
         "${pkgname}.service"
         "restore-html2man.patch")
-sha1sums=('257faad9d2b717b97fe07ca68106979c74e9ea92'
+sha1sums=('8ab3f69818ac200e64381e4ee12d3b60d75d04fb'
           '65521f208cbf37be162d099293531cbe4bfa4d1e'
           '2e216a85c9404e9a9f06aefeea0a15ba86542e18'
           '3e3cc91d6b2b5a7febc278f509f475cadfeb3c0c')
