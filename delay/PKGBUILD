@@ -1,0 +1,23 @@
+# Contributor: Andrew Fuller <qartis@gmail.com>
+pkgname=delay
+pkgver=1.6
+pkgrel=1
+pkgdesc="Delay a specified time period on the command line"
+arch=("i686" "x86_64")
+url="http://onegeek.org/~tom/software/delay/"
+license=("GPL")
+source=("http://onegeek.org/~tom/software/delay/dl/delay-1.6.tar.gz" "delay-1.6.patch")
+md5sums=("a82f6940ed14377495e97f7e0ecae772" "48a4fd55ca832e023ba467c75ba68df0")
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p0 -i "$srcdir/${pkgname}-${pkgver}.patch" || return 1
+  autoconf
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install || return 1
+}
