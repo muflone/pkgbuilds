@@ -2,8 +2,8 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=netactview
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="A graphical network connections viewer similar in functionality to netstat"
 arch=('i686' 'x86_64')
 url="http://netactview.sourceforge.net/index.html"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('libgnome' 'libglade' 'gksu')
 makedepends=('intltool')
 source=("http://downloads.sourceforge.net/netactview/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('82f5491efdc1dac6f2d86587b7a3316fa1cf66ff7702c8633dd21eed32433ef4')
+sha256sums=('83c512f9b2060acc292cf415550811a412021ea266adbdd45bd5bd82655b9370')
 
 build() {
   cd "${pkgname}-${pkgver}"
