@@ -1,8 +1,9 @@
+# $Id: PKGBUILD 129726 2015-03-21 20:37:43Z muflone $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=netactview
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A graphical network connections viewer similar in functionality to netstat"
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ license=('GPL')
 depends=('libgnome' 'libglade' 'gksu')
 makedepends=('intltool')
 source=("http://downloads.sourceforge.net/netactview/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('83c512f9b2060acc292cf415550811a412021ea266adbdd45bd5bd82655b9370')
+sha256sums=('6418b338ab10a76379af826a720eba6dd9a3401bf6c9aac206438f88eaee5d39')
 
 build() {
   cd "${pkgname}-${pkgver}"
