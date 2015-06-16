@@ -34,9 +34,9 @@ package() {
         _source_arch="32"
     fi
 
-    install -Dm755 "OCZToolbox_v${pkgver}_linux/linux${_source_arch}/OCZToolbox" "${pkgdir}/usr/bin/ocztoolbox"
-    install -Dm644 ocztoolbox.desktop "${pkgdir}/usr/share/applications/ocztoolbox.desktop"
-    install -Dm644 ocztoolbox.png "${pkgdir}/usr/share/pixmaps/ocztoolbox.png"
+    install -Dm755 "OCZToolbox_v${pkgver}_linux/linux${_source_arch}/OCZToolbox" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 ${pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     # Install policy file
     install -m 755 -d "${pkgdir}/usr/share/polkit-1/actions"
