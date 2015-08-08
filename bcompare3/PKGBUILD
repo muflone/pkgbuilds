@@ -1,4 +1,4 @@
-# Maintainer : Firef0x <firefgx { at } gmail { dot } com>
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Firef0x <firefgx { at } gmail { dot } com>
 # Contributor: Musikolo <musikolo {at} hotmail [dot] com>
 # Contributor: Magician <magician21 ett lycos daht com>
@@ -10,82 +10,81 @@
 # - http://www.scootersoftware.com/vbulletin/showpost.php?s=3c1f289bc76655230b49f440dbe17b53&p=26449&postcount=7
 
 pkgname=bcompare3
-_pkgname=bcompare
 pkgver=3.3.13.18981
-pkgrel=1
+pkgrel=2
 pkgdesc="Beyond Compare 3: Compare, sync, and merge files and folders"
 arch=('i686' 'x86_64')
 url="http://www.scootersoftware.com"
 license=('custom')
-groups=('utility')
-makedepends=('sed')
-source=("http://www.scootersoftware.com/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('9ae0cc2012c48fe8dc175edb15ad78ac')
-sha1sums=('b18083c5225888f1d0401ae75191a13f2c9c83c3')
+makedepends=('python-html2text')
+depends=('shared-mime-info' 'desktop-file-utils')
+depends_i686=('libsm' 'libxcursor' 'libxft' 'libxinerama' 'libxrandr')
+depends_x86_64=('lib32-libsm' 'lib32-libxcursor' 'lib32-libxft' 'lib32-libxinerama' 'lib32-libxrandr')
+source=("http://www.scootersoftware.com/bcompare-${pkgver}.tar.gz"
+        "license.html"::"http://www.scootersoftware.com/shop.php?zz=kb_license")
+sha256sums=('325034adc1755846399acf99e672e5f46184a1fe24077d672edd18b7ece8c3d7'
+            'aea5e1df107528473c651aaef7ab0a60d87fa4662f9988c9dff83e05284be7d4')
 options=('!strip') # Do not strip binaries because it breaks them down
-install=${_pkgname}.install
-provides=($_pkgname=$pkgver)
+install="${pkgname}.install"
 conflicts=('bcompare' 'bcompare-beta')
 
 #Set up platform-specific variables
-_LIB_DIR='lib'
-_PKG_TYPE=''
-if test "$CARCH" == x86_64; then
-  _LIB_DIR='lib32'
-  _PKG_TYPE='lib32-'
-fi
-depends+=(${_PKG_TYPE}glibc ${_PKG_TYPE}expat ${_PKG_TYPE}fontconfig ${_PKG_TYPE}freetype2
-  ${_PKG_TYPE}gcc-libs ${_PKG_TYPE}libice ${_PKG_TYPE}libsm ${_PKG_TYPE}libstdc++5
-  ${_PKG_TYPE}libxcb ${_PKG_TYPE}libx11 ${_PKG_TYPE}libxau ${_PKG_TYPE}libxcursor ${_PKG_TYPE}libxext
-  ${_PKG_TYPE}libxfixes ${_PKG_TYPE}libxft ${_PKG_TYPE}libxinerama ${_PKG_TYPE}libxrandr
-  ${_PKG_TYPE}libxrender ${_PKG_TYPE}zlib)
+[ "$CARCH" == x86_64 ] && _LIB_DIR='lib32' || _LIB_DIR='lib'
 
-package() {
+prepare() {
+  # Prepare license file
+  html2text --ignore-links --ignore-images --ignore-emphasis --body-width=80 < \
+    license.html | sed -n '/# LICENSE AGREEMENT (V3)/,/remain in full force and effect./p' > LICENSE
+}
+
+build() {
   # Prepare the directory skeleton needed for install.sh
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/usr/share/doc"
-  mkdir -p "${pkgdir}/usr/share/mime/packages"
-  mkdir -p "${pkgdir}/usr/share/pixmaps"
-
-  # Set up service menus
-  echo -n "Do you want to install KDE service menus globally? [Y/n] "
-  read key
-  if [ "$key" != "n" -a "$key" != "N" ]; then
-    echo -n "Including KDE service menus in the package..."
-    mkdir -p "${pkgdir}/usr/lib/kde4"
-    mkdir -p "${pkgdir}/usr/share/kde4/services/"
-    echo " Done!"
-  else
-   echo "KDE service menus will NOT be included in the package."
-  fi
+  mkdir -p "${srcdir}/build/usr/share/applications"
+  mkdir -p "${srcdir}/build/usr/share/doc"
+  mkdir -p "${srcdir}/build/usr/share/mime/packages"
+  mkdir -p "${srcdir}/build/usr/share/pixmaps"
 
   # Apply some fixes on install.sh before run it
-  cd ${_pkgname}-${pkgver}
+  cd "bcompare-${pkgver}"
   sed -i 's|/usr/|${PREFIX}/usr/|g' install.sh
-  ./install.sh --prefix="${pkgdir}"
-
-  # Move some directories to usr
-  cd "${pkgdir}"
-  if [ -d usr/${_LIB_DIR} ]; then
-    mv usr/${_LIB_DIR}/* ${_LIB_DIR}
-  fi
-  mv bin ${_LIB_DIR} usr/
+  fakeroot ./install.sh --prefix="${srcdir}/build"
 
   # Fix wrong path
-  sed -i "s|"${pkgdir}"|/usr|g" usr/bin/bcompare
+  sed -i "s|"${srcdir}/build"|/usr|g" "${srcdir}/build/bin/bcompare"
+}
 
-  #Clean unneded files
-  pushd usr/${_LIB_DIR}/beyondcompare/ > /dev/null
-  rm -f uninstall.sh RPM-GPG-KEY-scootersoftware scootersoftware.repo kde_context_menu
-  mv help "${pkgdir}/usr/share/doc/beyondcompare"
-  mv README "${pkgdir}/usr/share/doc/beyondcompare/"
-  rm -rf ext
-  popd > /dev/null
+package() {
+  cd "${srcdir}/build"
 
-  # Clean some mime files
-  pushd usr/share > /dev/null
-  mv  mime/packages .
-  rm -rf mime/*
-  mv packages mime/
-  popd > /dev/null
+  # Install shell script file
+  install -m 755 -d "${pkgdir}/usr/bin"
+  install -m 755 -t "${pkgdir}/usr/bin" "bin/bcompare"
+
+  # Install binary files
+  install -m 755 -d "${pkgdir}/usr/${_LIB_DIR}/beyondcompare"
+  install -m 755 -t "${pkgdir}/usr/${_LIB_DIR}/beyondcompare" "${_LIB_DIR}/beyondcompare/BCompare"
+  install -m 644 -t "${pkgdir}/usr/${_LIB_DIR}/beyondcompare" "${_LIB_DIR}/beyondcompare"/{libqtc.so.1,libqt-mt.so.3,qtrc}
+
+  # Install documentation and help files
+  install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}/help"
+  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${_LIB_DIR}/beyondcompare/README"
+  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}/help" "${_LIB_DIR}/beyondcompare/help"/*
+  ln -s "../../share/doc/${pkgname}/help" "${pkgdir}/usr/${_LIB_DIR}/beyondcompare/help"
+
+  # Install application launcher
+  install -m 755 -d "${pkgdir}/usr/share/applications"
+  install -m 755 -t "${pkgdir}/usr/share/applications" "usr/share/applications/bcompare.desktop"
+
+  # Install icons
+  install -m 755 -d "${pkgdir}/usr/share/pixmaps"
+  install -m 644 -t "${pkgdir}/usr/share/pixmaps" "usr/share/pixmaps"/*
+  install -m 755 -d "${pkgdir}/usr/share/mime/"
+
+  # Install MIME files
+  install -m 755 -d "${pkgdir}/usr/share/mime/packages"
+  install -m 644 -t "${pkgdir}/usr/share/mime/packages" "usr/share/mime/packages/bcompare.xml"
+
+  # Install license file
+  install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
 }
