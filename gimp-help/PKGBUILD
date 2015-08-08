@@ -1,14 +1,15 @@
-# $Id: PKGBUILD 120165 2014-10-05 15:16:07Z muflone $
+# $Id: PKGBUILD 138123 2015-08-08 18:53:04Z muflone $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 
 pkgbase=gimp-help
 pkgver=2.8.2
-pkgrel=3
+pkgrel=4
 arch=('any')
 url='http://docs.gimp.org/'
 license=('GPL' 'LGPL')
 makedepends=('python2' 'docbook-xsl')
+optdepends=('webkitgtk2: enable built-in GIMP help browser')
 options=(!strip !zipman)
 source=("http://ftp.gimp.org/pub/gimp/help/${pkgbase}-${pkgver}.tar.bz2")
 md5sums=('a591c8974b2f4f584d0a769d52ed6c5b')
