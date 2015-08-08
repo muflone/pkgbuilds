@@ -1,37 +1,37 @@
 pkgname=xperia-flashtool
 _realname=flashtool
-pkgver=0.9.18.5
-pkgrel=2
+pkgver=0.9.19.0
+pkgrel=1
 pkgdesc="A S1 protocol flashing software for Sony Xperia phones"
 arch=('i686' 'x86_64')
 url="http://www.flashtool.net/"
 license=('unknown')
-depends=()
 makedepends=('p7zip')
-source=(path/to/$_realname-$pkgver-linux.tar.7z)
-sha1sums=('90b8a60d9d75c9ba40af9845c5d9e7439c03ef25')
-options='!strip'
+source=("https://dl.dropboxusercontent.com/u/99802211/External_Sources/Xperia%20Flashtool/flashtool-${pkgver}-linux.tar.7z"
+        "${pkgname}.sh")
+sha256sums=('1f14d304188e078b0eba5b90beff41a240dc225f0385fc870f3c9123115f9e5b'
+            'de578c79aa5c9a94c93e461d1d16bed3affbb5728fbc42fe5f2c97ff7cb07d9e')
+options=('!strip')
 
 build() {
-    msg2 "Generate executable script..."
-    cat > "${srcdir}/FlashTool" << EOF
-#!/bin/sh
-if [ ! -d "/root/.flashTool/firmwares" ]; then
-    mkdir -p /root/.flashTool/firmwares
-fi
-if [ -d "/usr/share/java/FlashTool/firmwares" ]; then
-    mv /usr/share/java/FlashTool/firmwares/* /root/.flashTool/firmwares
-fi
-/usr/share/java/FlashTool/FlashTool
-EOF
+  tar xf "${_realname}-${pkgver}-linux.tar"
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/share/java"
-    cd "$pkgdir/usr/share/java"
-    tar xf "$srcdir/$_realname-$pkgver-linux.tar" || return 1
-
-    mkdir -p "${pkgdir}/usr/bin"
-    cp "${srcdir}/FlashTool" "${pkgdir}/usr/bin"
-    chmod 755 "${pkgdir}/usr/bin/FlashTool"
+  # Remove useless files for the selected architecture
+  pushd "FlashTool/x10flasher_lib" > /dev/null
+  if [ "$CARCH"=="x86_64" ]; then
+    rm -rf "adb.linux.x86" "fastboot.linux.x86" "unyaffs.linux.x86" \
+      "linjre32" "linux/lib32" "swtlin/swt32.jar"
+  else
+    rm -rf "adb.linux.x64" "fastboot.linux.x64" "unyaffs.linux.x64" \
+      "linjre64" "linux/lib64" "swtlin/swt64.jar"
+  fi
+  popd > /dev/null
+  # Install all the program files
+  install -m 755 -d "${pkgdir}/usr/share/java/${pkgname}"
+  cp -rt "${pkgdir}/usr/share/java/${pkgname}" FlashTool/*
+  # Install launcher scripts
+  install -m 755 -d "${pkgdir}/usr/bin"
+  install -m 755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
