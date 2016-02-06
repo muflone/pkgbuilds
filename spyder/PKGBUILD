@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 148578 2015-12-05 17:24:32Z muflone $
+# $Id: PKGBUILD 160484 2016-02-06 20:50:56Z muflone $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Francois Boulogne <fboulogne@april.org>
 # Contributor: TDY <tdy@gmx.com>
@@ -6,11 +6,11 @@
 pkgbase='spyder'
 pkgname=('spyder' 'spyder3')
 pkgver=2.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Scientific PYthon Development EnviRonment providing MATLAB-like features.'
 makedepends=('python2-setuptools' 'python-setuptools' 'python-sphinx' 'python2-sphinx')
 arch=('any')
-url='http://code.google.com/p/spyderlib/'
+url='https://github.com/spyder-ide/spyder/'
 license=('MIT')
 install="${pkgbase}.install"
 source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/spyder-ide/${pkgbase}/archive/v${pkgver}.tar.gz"
