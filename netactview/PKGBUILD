@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 208408 2017-01-22 16:41:37Z bgyorgy $
+# $Id: PKGBUILD 260779 2017-09-28 12:09:28Z jgc $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=netactview
 pkgver=0.6.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A graphical network connections viewer similar in functionality to netstat"
 arch=('i686' 'x86_64')
 url="http://netactview.sourceforge.net/index.html"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('gconf' 'libglade' 'libgtop')
 makedepends=('intltool' 'polkit')
 optdepends=('polkit: restart the application as root')
-source=("http://downloads.sourceforge.net/netactview/${pkgname}-${pkgver}.tar.bz2"
+source=("https://downloads.sourceforge.net/netactview/${pkgname}-${pkgver}.tar.bz2"
         'drop-libgnome.patch'
         'netactview_polkit'
         'org.archlinux.pkexec.netactview.policy')
