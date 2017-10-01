@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 261142 2017-09-30 23:56:41Z muflone $
+# $Id: PKGBUILD 261144 2017-10-01 00:20:07Z muflone $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=dbeaver-plugin-batik
 pkgver=1.9.1
-pkgrel=1
-pkgdesc='DBeaver plugin for SVG format'
+pkgrel=2
+pkgdesc='DBeaver library for SVG format'
 arch=('any')
 url='http://dbeaver.jkiss.org/'
 license=('Apache')
