@@ -8,7 +8,7 @@
 pkgname=iscan-plugin-gt-f720
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="EPSON Image Scan! plugin for Epson scanner (GT-F720, GT-S620, Perfection V30, Perfection V300 Photo)"
+pkgdesc="EPSON Image Scan! plugin for Epson scanners (GT-F720, GT-S620, Perfection V30, Perfection V300 Photo)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:AVASYSPL')
