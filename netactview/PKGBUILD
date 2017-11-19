@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 260779 2017-09-28 12:09:28Z jgc $
+# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: lp76 <l.peduto@gmail.com>
 
@@ -6,7 +6,7 @@ pkgname=netactview
 pkgver=0.6.4
 pkgrel=4
 pkgdesc="A graphical network connections viewer similar in functionality to netstat"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://netactview.sourceforge.net/index.html"
 license=('GPL')
 depends=('gconf' 'libglade' 'libgtop')
