@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 197891 2016-12-04 23:24:28Z muflone $
+# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Frederic Bezies < fredbezies at gmail dot com>
 # Contributor: garion < garion @ mailoo.org >
@@ -8,7 +8,7 @@ pkgname=iscan
 pkgver=2.30.3.1
 pkgrel=1
 pkgdesc="EPSON Image Scan! front-end for scanners and all-in-ones"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('GPL2' 'custom:AVASYSPL')
 depends=('gtk2' 'sane' 'libstdc++5')
