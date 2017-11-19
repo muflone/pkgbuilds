@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 250938 2017-08-15 14:13:44Z muflone $
+# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: peace4all <markspost at rocketmail dot com>
 # Contributor: ingamedeo <ingamedeo at gmail dot com>
@@ -13,7 +13,7 @@ pkgname=kompozer
 pkgver=0.8b3
 pkgrel=19
 pkgdesc="A Dreamweaver style WYSIWYG web editor; Nvu unofficial bug-fix release"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('GPL')
 url="http://www.kompozer.net"
 depends=('gtk2' 'nss' 'libxt' 'libidl2')
