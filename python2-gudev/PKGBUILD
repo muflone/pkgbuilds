@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 135610 2015-06-19 20:36:15Z foutrelis $
+# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
@@ -7,7 +7,7 @@ _gitname=python-gudev
 pkgver=147.2
 pkgrel=7
 pkgdesc="Python binding to the GUDev udev helper library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/nzjrs/python-gudev"
 license=('LGPL3')
 depends=('libgudev')
