@@ -1,36 +1,39 @@
-# Maintainer: Chris Warrick <aur@chriswarrick.com>
+# $Id: PKGBUILD 281860 2018-01-13 23:47:28Z muflone $
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: Chris Warrick <aur@chriswarrick.com>
+
 pkgbase=python-cloudpickle
 pkgname=('python-cloudpickle' 'python2-cloudpickle')
 _pyname=cloudpickle
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Extended pickling support for Python objects'
 arch=('any')
 url='https://github.com/cloudpipe/cloudpickle'
 license=('BSD')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d0f6fc27882f865f2eb185fb0a32c84b')
+sha256sums=('b0e63dd89ed5285171a570186751bc9b84493675e99e12789e9a5dc5490ef554')
 
 prepare() {
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  cp -r "${srcdir}/${_pyname}-${pkgver}" "${srcdir}/${_pyname}-${pkgver}-py2"
+  # Prepare sources for python2 build
+  cp -r "${_pyname}-${pkgver}" "python2-cloudpickle-${pkgver}"
 }
 
 package_python-cloudpickle() {
-  depends=('python' 'python-setuptools')
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python3 setup.py install --root="${pkgdir}/" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
-  #ln -s ${_pyname} "${pkgdir}/usr/bin/${_pyname}3"
+  depends=('python-setuptools')
+
+  cd "${_pyname}-${pkgver}"
+  python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-cloudpickle() {
-  depends=('python2' 'python2-setuptools')
-  cd "${srcdir}/${_pyname}-${pkgver}-py2"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
-  #mv "${pkgdir}/usr/bin/${_pyname}" "${pkgdir}/usr/bin/${_pyname}2"
+  depends=('python2-setuptools')
+
+  cd "${pkgname}-${pkgver}"
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
