@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 313668 2018-04-01 00:36:13Z muflone $
+# $Id: PKGBUILD 313674 2018-04-01 01:08:59Z muflone $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Ian Guthrie <iguthrie [at] aol [dot] com>
 # Contributor: der_FeniX <derfenix [at] gmail [dot] com>
@@ -6,23 +6,28 @@
 pkgname=perl-filesys-df
 _perl_module=Filesys-Df
 pkgver=0.92
-pkgrel=4
+pkgrel=5
 pkgdesc="Perl extension for filesystem disk space information"
 arch=('x86_64')
 url="https://metacpan.org/release/${_perl_module}"
-license=('GPL3')
+license=('PerlArtistic' 'GPL')
 depends=('perl')
 source=("https://cpan.metacpan.org/authors/id/I/IG/IGUTHRIE/${_perl_module}-${pkgver}.tar.gz")
 sha256sums=('fe89cbb427e0e05f1cd97c2dd6d3866ac6b21bc7a85734ede159bdc35479552a')
 options=('!emptydirs')
 
 build() {
-   cd "${_perl_module}-${pkgver}"
-   perl Makefile.PL
-   make
+  cd "${_perl_module}-${pkgver}"
+  perl Makefile.PL
+  make
+}
+
+check() {
+  cd "${_perl_module}-${pkgver}"
+  make test
 }
 
 package() {
-   cd "${_perl_module}-${pkgver}"
-   make pure_install DESTDIR="${pkgdir}"
+  cd "${_perl_module}-${pkgver}"
+  make pure_install DESTDIR="${pkgdir}"
 }
