@@ -1,25 +1,28 @@
-# Maintainer: Ian Guthrie <iguthrie [at] aol [dot] com>
+# $Id: PKGBUILD 313668 2018-04-01 00:36:13Z muflone $
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: Ian Guthrie <iguthrie [at] aol [dot] com>
 # Contributor: der_FeniX <derfenix [at] gmail [dot] com>
 
 pkgname=perl-filesys-df
+_perl_module=Filesys-Df
 pkgver=0.92
-pkgrel=3
+pkgrel=4
 pkgdesc="Perl extension for filesystem disk space information"
-arch=('i686' 'x86_64')
-url="http://search.cpan.org/~iguthrie/Filesys-Df-0.92/"
-license=(GPL3)
+arch=('x86_64')
+url="https://metacpan.org/release/${_perl_module}"
+license=('GPL3')
 depends=('perl')
-source=(http://search.cpan.org/CPAN/authors/id/I/IG/IGUTHRIE/Filesys-Df-${pkgver}.tar.gz)
-md5sums=('a8b0aa3e5151a8a6c8b3067625980934')
+source=("https://cpan.metacpan.org/authors/id/I/IG/IGUTHRIE/${_perl_module}-${pkgver}.tar.gz")
+sha256sums=('fe89cbb427e0e05f1cd97c2dd6d3866ac6b21bc7a85734ede159bdc35479552a')
+options=('!emptydirs')
 
 build() {
-   cd ${srcdir}/Filesys-Df-${pkgver}
-   perl Makefile.PL || return 1
-   make || return 1
+   cd "${_perl_module}-${pkgver}"
+   perl Makefile.PL
+   make
 }
 
-
 package() {
-   cd ${srcdir}/Filesys-Df-${pkgver}
-   make DESTDIR="${pkgdir}" install || return 1
+   cd "${_perl_module}-${pkgver}"
+   make pure_install DESTDIR="${pkgdir}"
 }
