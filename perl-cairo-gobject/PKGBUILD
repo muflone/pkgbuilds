@@ -1,35 +1,38 @@
-# Maintainer: 3ED <krzysztof1987 at gmail dot com>
-#
+# $Id: PKGBUILD 314003 2018-04-03 21:54:40Z muflone $
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: 3ED <krzysztof1987 at gmail dot com>
+
 pkgname=perl-cairo-gobject
-_lastauthor=X/XA/XAOC
-_pkgname=Cairo-GObject
+_perl_module=Cairo-GObject
 pkgver=1.004
-pkgrel=4
+pkgrel=5
 pkgdesc="Integrate Cairo into the Glib type system"
-arch=('i686' 'x86_64')
+arch=('x86_64')
+url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
 license=('LGPL')
-options=('!emptydirs')
-depends=('glib-perl' 'cairo-perl')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
-url="http://search.cpan.org/dist/${_pkgname}/"
-source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
+depends=('glib-perl' 'cairo-perl')
+source=("https://cpan.metacpan.org/authors/id/X/XA/XAOC/${_perl_module}-${pkgver}.tar.gz")
 sha256sums=('3bb9d40e802e51f56f1364abc553758152131803c12d85ba6e14bad6813409d5')
+options=('!emptydirs')
 
 build() {
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_perl_module}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   perl Makefile.PL
   make
 }
+
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_perl_module}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
   make test
 }
+
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
+  cd "${_perl_module}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  make pure_install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
