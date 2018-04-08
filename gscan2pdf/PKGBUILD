@@ -1,3 +1,4 @@
+# $Id: PKGBUILD 315151 2018-04-08 16:49:32Z muflone $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Tristelune  <tristelune at archlinux dot info>
 # Contributor: LeCrayonVert <greenarrow at archlinux dot us>
@@ -6,13 +7,13 @@
 # Contributor: Olaf Leidinger <leidola@newcon.de>
 
 pkgname=gscan2pdf
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='A GUI with OCR capability to produce PDFs or DjVus from scanned documents'
 arch=('any')
 url='http://gscan2pdf.sourceforge.net/'
 license=('GPL')
-depends=('imagemagick' 'perl-config-general' 'perl-date-calc' 'perl-goo-canvas2'
+depends=('imagemagick' 'perl-config-general' 'perl-date-calc' 'perl-goocanvas2'
          'perl-gtk3-simplelist' 'perl-data-uuid'
          'perl-filesys-df' 'perl-html-parser' 'perl-list-moreutils'
          'perl-locale-gettext' 'perl-log-log4perl' 'perl-pdf-api2'
@@ -26,23 +27,24 @@ optdepends=('djvulibre: DjVu image format'
             'cuneiform: OCR support'
             'perl-gtk2-ex-podviewer: view inline documentation')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('133939d5e158643409688fb7c2289b2e26f50beefa0853daaeb4b1d22f7253da')
+sha256sums=('c9b240bc438b8060a1e3606860372534cea0a74dedbcfb564e31020fb280c21f')
 options=('!emptydirs')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor 
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  perl Makefile.PL
   make
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  make install DESTDIR="${pkgdir}"
-
-  # Move files
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
   mv "${pkgdir}/usr/bin/vendor_perl/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-  # Cleaning
+  # Delete unuseful files
   find "${pkgdir}" -name '.packlist' -delete
   find "${pkgdir}" -name '*.pod' -delete
 }
