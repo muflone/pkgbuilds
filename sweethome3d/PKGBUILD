@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 289069 2018-02-04 20:08:31Z muflone $
+# $Id: PKGBUILD 316794 2018-04-17 20:50:54Z bpiotrowski $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: jsteel <mail at jsteel dot org>
 # Contributor: Daniel YC Lin <dlin.tw at gmail>
@@ -8,12 +8,12 @@
 
 pkgname=sweethome3d
 pkgver=5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An interior design application to draw the plan of your house in a 3D environment"
 arch=('x86_64')
 url="http://www.sweethome3d.com/"
 license=('GPL' 'custom')
-depends=('java-runtime>=8' 'shared-mime-info' 'desktop-file-utils' 'libxext' 'libgl' 'libxrender')
+depends=('java-runtime>=8' 'shared-mime-info' 'desktop-file-utils' 'libxext' 'libgl' 'libxrender' 'libnsl')
 source=("SweetHome3D-${pkgver}-linux-x64.tgz"::"http://downloads.sourceforge.net/${pkgname}/SweetHome3D-${pkgver}-linux-x64.tgz"
         "${pkgname}.sh"
         "${pkgname}.desktop"
