@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 342295 2018-06-10 20:58:08Z muflone $
+# $Id: PKGBUILD 348649 2018-06-30 17:34:54Z foutrelis $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgbase='python-qtpy'
 _pkgbase='qtpy'
 pkgname=('python-qtpy' 'python2-qtpy')
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides an uniform layer to support PyQt5, PyQt4 and PySide with a single codebase'
 makedepends=('python' 'python-setuptools'
              'python2' 'python2-setuptools')

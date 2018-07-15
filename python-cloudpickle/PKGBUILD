@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 342289 2018-06-10 20:50:15Z muflone $
+# $Id: PKGBUILD 348580 2018-06-30 16:52:10Z felixonmars $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Chris Warrick <aur@chriswarrick.com>
 
@@ -6,7 +6,7 @@ pkgbase=python-cloudpickle
 pkgname=('python-cloudpickle' 'python2-cloudpickle')
 _pyname=cloudpickle
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Extended pickling support for Python objects'
 arch=('any')
 url='https://github.com/cloudpipe/cloudpickle'
