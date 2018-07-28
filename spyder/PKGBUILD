@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 312609 2018-03-25 18:04:35Z muflone $
+# $Id: PKGBUILD 362962 2018-07-23 15:14:44Z felixonmars $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Francois Boulogne <fboulogne@april.org>
 # Contributor: TDY <tdy@gmx.com>
@@ -6,7 +6,7 @@
 pkgbase='spyder'
 pkgname=('spyder2' 'spyder3')
 pkgver=3.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Scientific PYthon Development EnviRonment providing MATLAB-like features.'
 makedepends=('python2-setuptools' 'python-setuptools' 'python-sphinx' 'python2-sphinx')
 arch=('any')
