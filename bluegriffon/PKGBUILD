@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 314609 2018-04-06 23:35:31Z bgyorgy $
+# $Id: PKGBUILD 369949 2018-08-06 22:06:55Z foutrelis $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
@@ -6,7 +6,7 @@ pkgbase=bluegriffon
 pkgname=(bluegriffon)
 pkgver=3.1
 _gecko_dev_revision=042b84a # see config/gecko_dev_revision.txt
-pkgrel=1
+pkgrel=2
 pkgdesc="The next-generation Web Editor based on the rendering engine of Firefox"
 arch=('x86_64')
 url="http://bluegriffon.org/"
