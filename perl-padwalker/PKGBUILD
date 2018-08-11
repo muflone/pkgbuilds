@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 313786 2018-04-02 00:05:31Z muflone $
+# $Id: PKGBUILD 366660 2018-08-01 12:07:00Z foutrelis $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=perl-padwalker
 _perl_module=PadWalker
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Play with other peoples' lexical variables"
 arch=('x86_64')
 url="https://metacpan.org/release/${_perl_module}"
