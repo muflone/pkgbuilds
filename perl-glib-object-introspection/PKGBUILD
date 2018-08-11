@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 314015 2018-04-03 22:14:57Z muflone $
+# $Id: PKGBUILD 366760 2018-08-01 12:24:06Z foutrelis $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
@@ -7,7 +7,7 @@ pkgname=perl-glib-object-introspection
 _perl_namespace=Glib
 _perl_module=Object-Introspection
 pkgver=0.044
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamically create Perl language bindings"
 arch=('x86_64')
 url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
