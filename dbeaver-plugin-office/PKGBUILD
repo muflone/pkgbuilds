@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 359610 2018-07-15 22:06:01Z muflone $
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=dbeaver-plugin-office
