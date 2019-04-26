@@ -3,7 +3,7 @@
 pkgbase='python-qtpy'
 _pkgbase='qtpy'
 pkgname=('python-qtpy' 'python2-qtpy')
-pkgver=1.5.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Provides an uniform layer to support PyQt5, PyQt4 and PySide with a single codebase'
 makedepends=('python' 'python-setuptools'
@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/spyder-ide/${_pkgbase}/"
 license=('MIT')
 source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/spyder-ide/${_pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('4ea8e256ee59d68b52146291c199503cc4e3aefdc997408bb6d4c9d344de4c9a')
+sha256sums=('2998cb5a2148ecfbb9d9ecba7acaefe701808655a38ad644e942f159a6bcfb79')
 
 prepare() {
   # Prepare sources for Python 2.x
@@ -33,6 +33,7 @@ build() {
 package_python2-qtpy() {
   depends=('python2')
   optdepends=('python2-pyqt5: Qt5 Python bindings'
+              'python2-pyqtwebengine: Qt5-WebEngine python bindings'
               'python2-pyside2: PySide Qt5 Python bindings')
 
   cd "${pkgname}-${pkgver}"
@@ -44,6 +45,7 @@ package_python2-qtpy() {
 package_python-qtpy() {
   depends=('python')
   optdepends=('python-pyqt5: Qt5 Python bindings'
+              'python-pyqtwebengine: Qt5-WebEngine python bindings'
               'python-pyside2: PySide Qt5 Python bindings')
 
   cd "${_pkgbase}-${pkgver}"
