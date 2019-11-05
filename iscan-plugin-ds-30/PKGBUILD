@@ -41,7 +41,7 @@ package() {
   # Install plugins
   install -m 755 -d "${pkgdir}/usr/lib/iscan"
   install -m 644 -t "${pkgdir}/usr/lib/iscan" "lib/iscan/lib${pkgname}.so.0.0.0"
-  ln -s "lib${pkgname}.so.0.0.0" "${pkgdir}/usr/lib/iscaAAn/lib${pkgname}.so"
+  ln -s "lib${pkgname}.so.0.0.0" "${pkgdir}/usr/lib/iscan/lib${pkgname}.so"
   ln -s "lib${pkgname}.so.0.0.0" "${pkgdir}/usr/lib/iscan/lib${pkgname}.so.0"
   # Install documentation
   install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}"
