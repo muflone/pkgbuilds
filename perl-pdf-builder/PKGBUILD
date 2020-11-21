@@ -1,40 +1,40 @@
-# maintainer: web.de jan.stuehler
-_author="Phil M. Perry"
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: web.de jan.stuehler
+
 pkgname=perl-pdf-builder
-pkgver=3.018
+_perl_namespace=PDF
+_perl_module=Builder
+pkgver=3.019
 pkgrel=1
 pkgdesc="Facilitates the creation and modification of PDF files"
 arch=('any')
+url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
 license=('LGPL')
+depends=('perl' 'perl-font-ttf')
+checkdepends=('perl-test-exception' 'perl-test-memory-cycle')
+source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
+sha512sums=('f1869a6ecb202a7661600e91ddc1ab1d21387979d7e42470ec4c663f2b36b8c04e12c475f5ba90a88ce43950723f73ce46c5d0057220d5a53e34cc16b22ce92e')
 options=('!emptydirs')
-depends=(perl-test-exception perl-test-memory-cycle)
-url='https://metacpan.org/pod/PDF::Builder'
-source=('https://cpan.metacpan.org/authors/id/P/PM/PMPERRY/PDF-Builder-3.018.tar.gz')
-sha512sums=('da367aa520a0e779d70293ab3b270fc539d7467bfd7066bc2b7cc299bf018596dcd2859208368eb30ebcd3028321d141c41f8dc4b7913dc4fdc31f49c0533be5')
-_distdir="PDF-Builder-3.018"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  perl Makefile.PL
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  make pure_install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+  # Delete unuseful files
+  find "${pkgdir}" -name '.packlist' -delete
 }
