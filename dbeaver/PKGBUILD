@@ -2,7 +2,7 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=7.3.3
+pkgver=7.3.4
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
@@ -18,9 +18,9 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/serge-rider/dbeaver/a
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('8b4cff6a1e172da763373ddc7df554569f53a0c529175e540d4b64ed2b7066d9'
+sha256sums=('1adc7989776955d52afb5f6ff7cf4d027f2a8d7b0522ebacdaf8ece1f51db228'
             '27573b6ddb62a3d4dde4841a633e9b52cb020deb338b327a6d460fd3a29c8ded'
-            '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
+            '3d1138ef8ec6d413d9552cab0444bd3b692fa808e9798a16b280ab17b6ca3659'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
             'f8b763ca210bfa4d9a4e407b656ba4f5d1bf2f3f54c67044f7a4dd0c3625fc22'
             'f8d65dd933049b587a5815ea75a30ef944300b812df383ca1c2dcd68280bc7ab')
@@ -31,11 +31,10 @@ prepare() {
   gzip --decompress --keep --stdout "${pkgname}.profile.gz" | 
     sed "s/DBEAVER_VERSION/${pkgver}/g" |
     gzip -9 > "${pkgname}.profile-${pkgver}.gz"
+
   # Avoid the use of any Java 15, actually incompatible with the build
-  for _java_version in $(archlinux-java status | tail -n +2 | cut -d' ' -f 3 | grep -v 'java-15')
-  do
-    export JAVA_HOME="/usr/lib/jvm/${_java_version}"
-  done
+  export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -v '15-openjdk' -m 1)"
+  
   # Download dependencies during prepare FS#55873
   # https://bugs.archlinux.org/task/55873
   cd "${pkgname}-${pkgver}"
