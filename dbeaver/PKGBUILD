@@ -3,7 +3,7 @@
 
 pkgname=dbeaver
 pkgver=21.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
@@ -12,7 +12,7 @@ depends=('java-runtime>=11' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
 makedepends=('maven' 'java-runtime<15')
 optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format'
             'dbeaver-plugin-svg-format: save diagrams in SVG format')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/serge-rider/dbeaver/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh"
         "${pkgname}.profile.gz"
