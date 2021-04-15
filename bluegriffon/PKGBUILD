@@ -5,13 +5,13 @@ pkgbase=bluegriffon
 pkgname=(bluegriffon)
 pkgver=3.1
 _gecko_dev_revision=042b84a # see config/gecko_dev_revision.txt
-pkgrel=12
+pkgrel=13
 pkgdesc="The next-generation Web Editor based on the rendering engine of Firefox"
 arch=('x86_64')
 url="http://bluegriffon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('dbus-glib' 'gtk3' 'hunspell' 'nss' 'libvpx' 'libxt' 'startup-notification')
-makedepends=('autoconf2.13' 'gtk2' 'libpulse' 'python2' 'rust' 'unzip' 'yasm' 'zip')
+makedepends=('autoconf2.13' 'libpulse' 'python2' 'rust' 'unzip' 'yasm' 'zip')
 options=('!emptydirs')
 source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/therealglazou/${pkgbase}/archive/${pkgver}.tar.gz"
         "gecko-dev-${_gecko_dev_revision}.tar.gz"::"https://github.com/mozilla/gecko-dev/archive/${_gecko_dev_revision}.tar.gz"
