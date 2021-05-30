@@ -13,7 +13,7 @@ makedepends=('maven' 'java-runtime<15')
 optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format'
             'dbeaver-plugin-svg-format: save diagrams in SVG format')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archive/${pkgver}.tar.gz"
-        "${pkgname}.desktop"
+        "io.${pkgname}.DBeaver.desktop"
         "${pkgname}.sh"
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
@@ -93,7 +93,7 @@ package() {
 
   # Install application launcher into /usr/share/applications
   install -m 755 -d "${pkgdir}/usr/share/applications"
-  install -m 755 -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
+  install -m 755 -t "${pkgdir}/usr/share/applications" "${srcdir}/io.${pkgname}.DBeaver.desktop"
 
   # Clean up and install new profile
   rm -rf "${pkgdir}/usr/share/${pkgname}/p2/org.eclipse.equinox.p2.core"
