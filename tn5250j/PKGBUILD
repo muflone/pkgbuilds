@@ -68,3 +68,4 @@ package() {
   install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
     *.txt *.policy *.properties *.html *.php *.ssl
 }
+
