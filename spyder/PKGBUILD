@@ -4,13 +4,13 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=spyder
-pkgver=5.2.0
-pkgrel=2
+pkgver=5.3.1
+pkgrel=1
 pkgdesc="The Scientific Python Development Environment"
 arch=(any)
 url="https://www.spyder-ide.org/"
 license=(MIT)
-makedepends=(python-sphinx)
+makedepends=(python-sphinx python-setuptools-scm python-wheel)
 depends=(
     python-atomicwrites
     python-chardet
@@ -73,7 +73,6 @@ checkdepends=(
     python-pytest-qt
     python-pytest-mock
     python-pytest-cov
-    python-pytest-xvfb
     python-pytest-order
     python-pytest-lazy-fixture
     python-flaky
@@ -85,22 +84,28 @@ checkdepends=(
     cython
     git
     tk
+    xorg-server-xvfb
 )
 source=(https://github.com/spyder-ide/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('9298c845a17f348bccbe93451f03aef0d4ee2bde2d3025ac7ed695b3e3c3941cb9852f7c56d676ca022a37020a647c93977e0845fe6f5686dd2598236a9c7d9c')
+sha512sums=('2501ddc45df11671b1a318eb33b50788b334ab10fbafb97a9491775a0efcc6a57814672068ab84314f9cb43961d6fabd9b906fb164cd58c77b6d6ecf0d6621e6')
 
 prepare() {
   cd ${pkgname}-${pkgver}
   # Allow our python libraries versions
-  #sed "s|JEDI_REQVER = '=|JEDI_REQVER = '>=|" -i spyder/dependencies.py
-  #sed "s|PARSO_REQVER = '=|PARSO_REQVER = '>=|" -i spyder/dependencies.py
-  sed "s|QDARKSTYLE_REQVER = '=|QDARKSTYLE_REQVER = '>=|" -i spyder/dependencies.py
-  #sed "s|jedi==|jedi>=|" -i setup.py
-  #sed "s|parso==|parso>=|" -i setup.py
-  sed "s|qdarkstyle==|qdarkstyle>=|" -i setup.py
-  # Allow our Qt version
-  sed "s|'pyqt5<5.13'|'pyqt5'|" -i setup.py
-  sed "s|'pyqtwebengine<5.13'|'pyqtwebengine'|" -i setup.py
+  sed 's|IPYTHON_REQVER = ">=7.31.1;<8.0.0"|IPYTHON_REQVER = ">=7.31.1"|' -i spyder/dependencies.py
+  sed "s|JEDI_REQVER = '>=0.17.2;<0.19.0'|JEDI_REQVER = '>=0.17.2'|" -i spyder/dependencies.py
+  sed "s|PARSO_REQVER = '>=0.7.0;<0.9.0'|PARSO_REQVER = '>=0.7.0'|" -i spyder/dependencies.py
+  sed "s|PYLSP_REQVER = '>=1.4.1;<1.5.0'|PYLSP_REQVER = '>=1.4.1'|" -i spyder/dependencies.py
+  sed "s|QDARKSTYLE_REQVER = '>=3.0.2;<3.1.0'|QDARKSTYLE_REQVER = '>=3.0.2'|" -i spyder/dependencies.py
+  sed "s|QTCONSOLE_REQVER = '>=5.3.0;<5.4.0'|QTCONSOLE_REQVER = '>=5.3.0'|" -i spyder/dependencies.py
+  sed "s|ipython>=7.31.1,<8.0.0|ipython>=7.31.1|" -i setup.py
+  sed "s|jedi>=0.17.2,<0.19.0|jedi>=0.17.2|" -i setup.py
+  sed "s|parso>=0.7.0,<0.9.0|parso>=0.7.0|" -i setup.py
+  sed "s|python-lsp-server\[all\]>=1.4.1,<1.5.0|python-lsp-server\[all\]>=1.4.1|" -i setup.py
+  sed "s|qdarkstyle>=3.0.2,<3.1.0|qdarkstyle>=3.0.2|" -i setup.py
+  sed "s|qtconsole>=5.3.0,<5.4.0|qtconsole>=5.3.0|" -i setup.py
+  # Required change for ipython
+  sed "s|extra_extension|extra_extensions|" -i spyder/plugins/ipythonconsole/tests/test_ipythonconsole.py
 }
 
 build() {
@@ -111,17 +116,33 @@ build() {
 check() {
   cd ${pkgname}-${pkgver}
   # Required per above patching
-  #sed "s|jedi =|jedi >=|" -i binder/environment.yml
-  #sed "s|parso =|parso >=|" -i binder/environment.yml
-  sed "s|qdarkstyle =|qdarkstyle >=|" -i binder/environment.yml
-  sed "s|pyqt <5.13|pyqt|" -i binder/environment.yml
-  #sed "s|jedi =|jedi >=|" -i requirements/conda.txt
-  #sed "s|parso =|parso >=|" -i requirements/conda.txt
-  sed "s|qdarkstyle =|qdarkstyle >=|" -i requirements/conda.txt
-  sed "s|pyqt <5.13|pyqt|" -i requirements/conda.txt
-  # Failures from Qt5.12-targeted tests, non-CI tests, etc.
-  # Some even segfaults, but upstream does not support us
-  python runtests.py --color=yes || echo "Tests failed"
+  sed "s|ipython >=7.31.1,<8.0.0|ipython >=7.31.1|" -i binder/environment.yml
+  sed "s|jedi >=0.17.2,<0.19.0|jedi >=0.17.2|" -i binder/environment.yml
+  sed "s|parso >=0.7.0,<0.9.0|parso >=0.7.0|" -i binder/environment.yml
+  sed "s|python-lsp-server >=1.4.1,<1.5.0|python-lsp-server >=1.4.1|" -i binder/environment.yml
+  sed "s|qdarkstyle >=3.0.2,<3.1.0|qdarkstyle >=3.0.2|" -i binder/environment.yml
+  sed "s|qtconsole >=5.3.0,<5.4.0|qtconsole >=5.3.0|" -i binder/environment.yml
+  sed "s|IPython >=7.31.1,<8.0.0|IPython >=7.31.1|" -i requirements/conda.txt
+  sed "s|jedi >=0.17.2,<0.19.0|jedi >=0.17.2|" -i requirements/conda.txt
+  sed "s|parso >=0.7.0,<0.9.0|parso >=0.7.0|" -i requirements/conda.txt
+  sed "s|python-lsp-server >=1.4.1,<1.5.0|python-lsp-server >=1.4.1|" -i requirements/conda.txt
+  sed "s|qdarkstyle >=3.0.2,<3.1.0|qdarkstyle >=3.0.2|" -i requirements/conda.txt
+  sed "s|qtconsole >=5.3.0,<5.4.0|qtconsole >=5.3.0|" -i requirements/conda.txt
+  local disabled_tests=''
+  # Not working in headless env
+  disabled_tests+='not test_config_dialog'
+  disabled_tests+=' and not test_tab_copies_find_to_replace'
+  disabled_tests+=' and not test_toggle_off_show_all_files'
+  disabled_tests+=' and not test_select_all_shortcut'
+  disabled_tests+=' and not test_delete_line_shortcut'
+  disabled_tests+=' and not test_go_to_line_shortcut'
+  disabled_tests+=' and not test_transform_to_lowercase_shortcut'
+  disabled_tests+=' and not test_transform_to_uppercase_shortcut'
+  disabled_tests+=' and not test_ctrl_c_dbg'
+  disabled_tests+=' and not test_connection_dialog_remembers_input_with_ssh_passphrase'
+  disabled_tests+=' and not test_connection_dialog_remembers_input_with_password' 
+  disabled_tests+=' and not test_store_user_credentials'
+  xvfb-run --auto-servernum python runtests.py --color=yes -k "${disabled_tests}"
 }
 
 package() {
