@@ -3,8 +3,7 @@
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 # Contributor: osiixy <osiixy at gmail dot com>
 
-pkgname=eggs
-_pkgname=penguins-$pkgname
+pkgname=penguins-eggs
 pkgver=9.2.1
 pkgrel=1
 pkgdesc="A terminal utility which allows you to remaster your system and redistribute it as an ISO image, on a USB stick or through the network via PXE remote boot"
@@ -20,11 +19,11 @@ depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub'
          'squashfs-tools' 'xdg-utils')
 optdepends=('bash-completion: enable eggs commands automatic completion'
             'calamares: system installer GUI')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pieroproietti/${_pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pieroproietti/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('264761bf66154e5bf6f96364d64a4d81fce4839f61e80a901160cc46f517cb0c')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   # Install pnpm into "pnpm-dir"
   npm set prefix "pnpm-dir"
   npm install -g pnpm
@@ -34,12 +33,12 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   # Fix permissions
   chown root:root "lib" "node_modules"
   # Fix paths for node modules
-  find node_modules -type f -print0 | xargs --null sed -i "s#${srcdir}/${_pkgname}-${pkgver}/#/usr/lib/eggs/#"
+  find node_modules -type f -print0 | xargs --null sed -i "s#${srcdir}/${pkgname}-${pkgver}/#/usr/lib/eggs/#"
 
   # We need them on /usr/lib/ not in /opt
   # I don't see problems. To change in /opt it's 
@@ -53,7 +52,7 @@ package() {
 
   # Symlink executable
   install -m 755 -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${pkgname}/bin/run" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/usr/lib/${pkgname}/bin/run" "${pkgdir}/usr/bin/eggs"
 
   # Install shell completion files
   install -m 755 -d "${pkgdir}/usr/share/bash-completion/completions"
@@ -65,7 +64,7 @@ package() {
   install -m 644 -D manpages/doc/man/eggs.roll.gz "${pkgdir}/usr/share/man/man1/eggs.1.gz"
 
   # Install desktop files
-  install -m 644 -D "assets/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -m 644 -D "assets/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   # Install icons
   install -m 644 -D assets/eggs.png -t "${pkgdir}/usr/share/pixmaps/"
