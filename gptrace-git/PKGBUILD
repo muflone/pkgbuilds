@@ -1,14 +1,14 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=gptrace-git
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Trace the activities of an external application"
-url="https://www.muflone.com/gptrace/"
+url="http://www.muflone.com/gptrace/"
 arch=('any')
 license=('GPL')
+makedepends=('git' 'python-setuptools')
 depends=('gtk3' 'gobject-introspection' 'python-xdg' 'python-gobject' 'python-ptrace')
-makedepends=('git')
 provides=('gptrace')
 conflicts=('gptrace')
 source=("git+https://github.com/muflone/gptrace.git")
