@@ -2,14 +2,14 @@
 
 pkgname=gnome-appfolders-manager-git
 _pkgname="${pkgname%-*}"
-pkgver=0.4.0
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Manage GNOME Shell applications folders."
 url="http://www.muflone.com/gnome-appfolders-manager"
 arch=('any')
 license=('GPL3')
-depends=('gtk3' 'python-xdg' 'python-gobject' 'python-setuptools')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
+depends=('gtk3' 'python-xdg' 'python-gobject')
 provides=('gnome-appfolders-manager')
 conflicts=('gnome-appfolders-manager')
 source=("git+https://github.com/muflone/${_pkgname}.git")
