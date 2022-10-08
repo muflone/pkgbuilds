@@ -31,14 +31,9 @@ package() {
   cd "build/${pkgname}"
   # Install binaries files
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" \
-    ovftool ovftool.bin \
-    libcrypto.so.1.0.2 libcurl.so.4 libgoogleurl.so.59 \
-    libicudata.so.60 libicuuc.so.60 \
-    libssl.so.1.0.2 libssoclient.so libxerces-c-3.2.so \
-    libvim-types.so libvmacore.so libvmomi.so
-  # Install data files
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" ovftool ovftool.bin lib*
   install -m 644 -t "${pkgdir}/usr/lib/${pkgname}" icudt44l.dat
+  # Install data files
   for _subdir in "certs" "env" "env/en" "schemas/DMTF" "schemas/vmware"
   do
     install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/${_subdir}"
