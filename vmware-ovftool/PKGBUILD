@@ -29,24 +29,24 @@ build() {
 
 package() {
   cd "build/${pkgname}"
-  # Install binaries files
+  msg2 "Install binaries files"
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" ovftool ovftool.bin lib*
   install -m 644 -t "${pkgdir}/usr/lib/${pkgname}" icudt44l.dat
-  # Install data files
+  msg2 "Install data files"
   for _subdir in "certs" "env" "env/en" "schemas/DMTF" "schemas/vmware"
   do
     install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/${_subdir}"
     install -m 644 -t "${pkgdir}/usr/lib/${pkgname}/${_subdir}" "${_subdir}"/*.*
   done
-  # Install main script symlink
+  msg2 "Install main script symlink"
   install -m 755 -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${pkgname}/ovftool" "${pkgdir}/usr/bin/ovftool"
-  # Install license files
+  msg2 "Install license files"
   install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
     "vmware.eula" "vmware-eula.rtf" "open_source_licenses.txt"
-  # Install documentation files
+  msg2 "Install documentation files"
   install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}"
   install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "README.txt"
 }
