@@ -2,8 +2,8 @@
 
 _pkg=spyder-kernels
 pkgname=python-${_pkg}
-pkgver=2.3.2
-pkgrel=1
+pkgver=2.4.0
+pkgrel=2
 pkgdesc="Jupyter Kernels for the Spyder console"
 arch=(any)
 url="https://github.com/spyder-ide/spyder-kernels/"
@@ -23,8 +23,8 @@ depends=(
 checkdepends=(
     python-dask
     python-distributed
+    python-django
     python-flaky
-    python-mock
     python-numpy
     python-pillow
     python-pytest
@@ -34,7 +34,7 @@ checkdepends=(
 # No tests in pypi tarballs
 #source=(https://files.pythonhosted.org/packages/source/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz)
 source=(${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('85d3fd93ee245acf37070fadb78cb7f2b99c01497d4f1aa048b1c1d6994f275f')
+sha256sums=('605181e4c628886b08f99a95caa2a5b3b98087821b9203659b14d60b07710205')
 
 prepare() {
   cd ${_pkg}-${pkgver}
