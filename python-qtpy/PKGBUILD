@@ -3,7 +3,7 @@
 
 _pkgname=qtpy
 pkgname=python-qtpy
-pkgver=2.1.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Provides an uniform layer to support PyQt5 and PySide2 with a single codebase"
 arch=(any)
@@ -21,7 +21,6 @@ optdepends=('python-pyqt5: Qt5 Python bindings'
 checkdepends=(
     python-pytest
     python-pytest-qt
-    python-mock
     python-pyqt5
     python-pyqt5-3d
     python-pyqt5-datavisualization
@@ -50,7 +49,7 @@ checkdepends=(
     xorg-server-xvfb
 )   
 source=(${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('1af852a76dcba44e66cf8576a8e3f4168592938f21b2f6bcedfaeca392c8809c')
+sha256sums=('30d051b9b47201960342f2c4dde7f12bd99581a05047bc8f5f45d5fe64f1e620')
 
 build() {
   cd ${_pkgname}-${pkgver}
