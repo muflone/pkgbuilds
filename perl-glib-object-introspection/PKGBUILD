@@ -6,16 +6,24 @@ pkgname=perl-glib-object-introspection
 _perl_namespace=Glib
 _perl_module=Object-Introspection
 pkgver=0.050
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamically create Perl language bindings"
 arch=('x86_64')
 url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
 license=('LGPL')
 makedepends=('gobject-introspection' 'perl-extutils-depends' 'perl-extutils-pkgconfig' 'perl-cairo-gobject')
 depends=('glib-perl' 'gobject-introspection-runtime')
-source=("https://cpan.metacpan.org/authors/id/X/XA/XAOC/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha512sums=('3939a7d96800416ca4e52bf263b5b84dde0a5dbe5ed636dc6668ee005c1f018e5988f8e0ba059165f966a05b5efc992391ae0de991e87b9118fab92ee39f97f4')
+source=("https://cpan.metacpan.org/authors/id/X/XA/XAOC/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz"
+        "https://gitlab.gnome.org/GNOME/perl-glib-object-introspection/-/commit/eef3b1f8662bf76095987eeef41308094693cf3e.patch")
+sha512sums=('3939a7d96800416ca4e52bf263b5b84dde0a5dbe5ed636dc6668ee005c1f018e5988f8e0ba059165f966a05b5efc992391ae0de991e87b9118fab92ee39f97f4'
+            '61da7269cc70b179b7f725b0801d75c8ec46e50b55f23532902db2e2cabfa54d49e860482f25b766955e87950e52cd5bc14d21f9336fb618f995848d4e63e21f')
 options=('!emptydirs')
+
+prepare() {
+  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  # patch can be dropped with the next release, fixes https://bugs.archlinux.org/task/78377
+  patch --forward --strip=1 --input="${srcdir}/eef3b1f8662bf76095987eeef41308094693cf3e.patch"
+}
 
 build() {
   cd "${_perl_namespace}-${_perl_module}-${pkgver}"
