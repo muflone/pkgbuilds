@@ -2,14 +2,14 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=23.0.4
+pkgver=23.1.0
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
 license=("Apache")
-depends=('java-runtime>=11' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
-makedepends=('maven' 'java-runtime<15')
+depends=('java-runtime>=17' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
+makedepends=('maven' 'java-runtime=17')
 optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format'
             'dbeaver-plugin-svg-format: save diagrams in SVG format')
 conflicts=('dbeaver-plugin-sshj-lib')
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('ddebd3b5b934bd34785037f6647d8f827a92c60b20983615d2902a6aae2e4050'
+sha256sums=('85df98086b9984c4379382077f90bee60231fd04e1ccde120e9422e29a462218'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
@@ -34,8 +34,8 @@ prepare() {
     sed "s/DBEAVER_VERSION/${pkgver}/g" |
     gzip -9 > "${pkgname}.profile-${pkgver}.gz"
 
-  # Avoid the use of any Java 15/16/17/18, actually incompatible with the build
-  export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -vE '15-|16-|17-|18-' -m 1)"
+  # Avoid the use of any Java 18/19/20, actually incompatible with the build
+  export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -vE '18-|19-|20-' -m 1)"
   cd "${pkgname}-${pkgver}"
 
   # Download dependencies during prepare FS#55873
