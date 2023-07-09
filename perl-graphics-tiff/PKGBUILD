@@ -3,7 +3,7 @@
 pkgname=perl-graphics-tiff
 _perl_namespace=Graphics
 _perl_module=TIFF
-pkgver=19
+pkgver=20
 pkgrel=1
 pkgdesc="Extension for the libtiff library"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
 depends=('perl' 'libtiff')
 checkdepends=('perl-readonly' 'perl-test-requires' 'perl-test-deep')
 source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('0050d8e40ba5ec98070c46ac485de0f7b325a1b7220aaa9591d05033deada479')
+sha256sums=('3e55cc209465e064019a215a52f05ff51040297d020393fe9fb3de27ad020e35')
 options=('!emptydirs')
 
 build() {
