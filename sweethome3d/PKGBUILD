@@ -7,22 +7,27 @@
 
 pkgname=sweethome3d
 pkgver=7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An interior design application to draw the plan of your house in a 3D environment"
 arch=('x86_64')
 url="http://www.sweethome3d.com/"
 license=('GPL' 'custom')
-depends=('java-runtime<17' 'shared-mime-info' 'desktop-file-utils' 'libxext' 'libgl' 'libxrender' 'libnsl')
-makedepends=('ant' 'strip-nondeterminism')
+depends=('java-runtime' 'shared-mime-info' 'desktop-file-utils' 'libxext' 'libgl' 'libxrender' 'libnsl')
+makedepends=('java-environment<20' 'ant' 'strip-nondeterminism')
 source=("SweetHome3D-${pkgver}-src.zip"::"https://downloads.sourceforge.net/${pkgname}/SweetHome3D-${pkgver}-src.zip"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.xml")
 sha256sums=('04b7453410ec918971cf69aeb5d0a8d1284369ffe544f8d49e8b81d2bd39b2a2'
-            '1e037cbb981dbd5d686a5b85cae43656193c3fcb543a1b46f93ef739551dcd65'
+            '9e95ebf426abffe91fe3046e024796d0408fee2987a458fd2782dc0b75124e03'
             '5eea3337d956d773b05ddef69fe9d34b940ff550370dc92bf307f1b9a3957f9e'
             'ec0ad1a0671f708af68ced46bec1f4ab377e24ca1a0a9984867ee5fe484f57c5')
 install="${pkgname}.install"
+
+prepare() {
+  # Avoid the use of any Java 20, actually incompatible with the build
+  export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -vE '20-' -m 1)"
+}
 
 build() {
   cd "SweetHome3D-${pkgver}-src"
@@ -57,4 +62,11 @@ package() {
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/java3d-1.6"
   install -m 644 -t "${pkgdir}/usr/lib/${pkgname}/java3d-1.6" java3d-1.6/*.jar
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}/java3d-1.6" java3d-1.6/linux/amd64/*.so
+  # Yafaray libraries
+  install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/yafaray"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}/yafaray" yafaray/linux/x64/*.so
+  # Yafaray plugins
+  install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/yafaray/yafaray-plugins"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}/yafaray/yafaray-plugins" yafaray/linux/x64/yafaray-plugins/*.so
+
 }
