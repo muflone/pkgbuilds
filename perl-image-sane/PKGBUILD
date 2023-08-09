@@ -6,7 +6,7 @@ pkgname=perl-image-sane
 _perl_namespace=Image
 _perl_module=Sane
 pkgver=5
-pkgrel=4
+pkgrel=5
 pkgdesc="Perl extension for the SANE (Scanner Access Now Easy) Project"
 arch=('x86_64')
 url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
@@ -16,9 +16,16 @@ depends=('perl' 'sane' 'perl-extutils-depends' 'perl-extutils-pkgconfig' 'perl-r
 provides=('perl-sane')
 replaces=('perl-sane')
 conflicts=('perl-sane')
-source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('229aa0e9f049efa760f3c2f6e61d9d539af43d8f764b50a6e03064b4729a35ff')
+source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz"
+         https://rt.cpan.org/Public/Ticket/Attachment/2538823/1107284/Image-Sane-5-Replace-deprecated-given-and-when-operators.patch)
+sha256sums=('229aa0e9f049efa760f3c2f6e61d9d539af43d8f764b50a6e03064b4729a35ff'
+            'b81caa036aabe4bcb67ca2729854c8e1dabb62d17b17214e41c930937edbf488')
 options=('!emptydirs')
+
+prepare() {
+  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  patch -p1 -i ../Image-Sane-5-Replace-deprecated-given-and-when-operators.patch # Fix tests with perl 5.38
+}
 
 build() {
   cd "${_perl_namespace}-${_perl_module}-${pkgver}"
