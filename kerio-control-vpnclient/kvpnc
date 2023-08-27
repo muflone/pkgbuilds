@@ -14,7 +14,7 @@ dialogbox () {
     --title "$2" \
     "$1" "\n$3" 9 78 $4
 }
-  
+
 inputbox () {
   dialogbox --inputbox "$1" "$2" "$3"
 }

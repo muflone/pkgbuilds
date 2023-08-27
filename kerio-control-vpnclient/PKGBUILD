@@ -17,7 +17,7 @@ source=("http://download.kerio.com/dwn/control/control-${pkgver%.*}-${pkgver##*.
         "kvpnc.conf"
         "kvpnc.service")
 sha256sums=('d4dc3dc75569cfc093503412aed74af0053afc8e4492242852c805d2f06eca44'
-            '984ac81f6fe291ca11a4dc6822bcb1e7efaf82d14259f5395247fdbdef4c1759'
+            'c5f04198ec1d81d14a6bb10897eb3224b9856cbe722b51767900de5a5baaf51a'
             '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
             'bd8b1aabc31b9b24c4b63ce8099bef111dc84bd4923c77d42e05d3f1704d5c17')
 
