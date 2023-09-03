@@ -8,7 +8,7 @@
 
 pkgname=shutter
 pkgver=0.99.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The feature-rich screenshot tool"
 arch=('any')
 url="https://shutter-project.org/"
@@ -45,7 +45,7 @@ optdepends=('perl-image-exiftool: read and write EXIF data'
             'perl-lwp-protocol-https: Imgur upload support'
             'perl-net-oauth: Imgur upload support'
             'bc: 3D Rotate and 3D Reflection plugins support'
-            'libappindicator-gtk3: display the tray icon in some environments (like GNOME)')
+            'libappindicator-gtk3: display the tray icon in some environments (like GNOME or Plasma Wayland)')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/shutter-project/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('57f7fdc1066375942bd1a9db381a8ba6f24fafbd5e0853a4dd19016438ec2f3cb039ebe90038d282bc07f6e45af9cdbb6f180f55e43357231b41818b8555347b')
 
