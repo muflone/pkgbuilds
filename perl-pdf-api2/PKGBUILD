@@ -8,7 +8,7 @@
 pkgname=perl-pdf-api2
 _perl_namespace=PDF
 _perl_module=API2
-pkgver=2.044
+pkgver=2.045
 pkgrel=1
 pkgdesc="Faciliates the creation and modification of PDF files"
 arch=('any')
@@ -17,7 +17,7 @@ license=('LGPL')
 depends=('perl' 'perl-font-ttf')
 checkdepends=('perl-test-exception' 'perl-test-memory-cycle')
 source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('b2d15579e42723d8d7f9b72de86d0d35cde34f1eb7713456ba2ad35fb3cbea7e')
+sha256sums=('b6bdb4e0d0cd6526103fdd58c171e0560c36b843b7fe3ca4ddc9bb1e4c832406')
 options=('!emptydirs')
 
 build() {
