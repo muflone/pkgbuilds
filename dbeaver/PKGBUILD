@@ -2,14 +2,14 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=23.3.0
+pkgver=23.3.1
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
 license=("Apache")
 depends=('java-runtime>=17' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
-makedepends=('maven' 'java-runtime=17')
+makedepends=('maven' 'java-environment=17')
 optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format'
             'dbeaver-plugin-svg-format: save diagrams in SVG format')
 conflicts=('dbeaver-plugin-sshj-lib')
@@ -19,13 +19,15 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "${pkgname}.sh"
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
-        "${pkgname}.install")
-sha256sums=('617ea555269bdc0a1d4c9a59c653713df8e3404d676ee055258e9a16903e29ec'
+        "${pkgname}.install"
+        "tycho_3_0_5.patch")
+sha256sums=('8e8671ff30d2eae8eb759f0c56673a07aefb669da21e6ba03294098868ce6e3d'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
             'f8b763ca210bfa4d9a4e407b656ba4f5d1bf2f3f54c67044f7a4dd0c3625fc22'
-            'f8d65dd933049b587a5815ea75a30ef944300b812df383ca1c2dcd68280bc7ab')
+            'f8d65dd933049b587a5815ea75a30ef944300b812df383ca1c2dcd68280bc7ab'
+            '1d5af2a9be9453f8279b2862fd579d82271b882515d8b69fc9fddb80e318bd78')
 install="${pkgname}.install"
 
 prepare() {
@@ -37,6 +39,9 @@ prepare() {
   # Avoid the use of any Java 18/19/20, actually incompatible with the build
   export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -vE '18-|19-|20-' -m 1)"
   cd "${pkgname}-${pkgver}"
+
+  # Fix for tycho which actually requires maven 3.9 not yet released in extra
+  patch -Np1 -i "${srcdir}/tycho_3_0_5.patch"
 
   # Download dependencies during prepare FS#55873
   # https://bugs.archlinux.org/task/55873

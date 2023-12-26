@@ -1,0 +1,12 @@
+diff -Naur dbeaver-23.3.1.orig/pom.xml dbeaver-23.3.1/pom.xml
+--- dbeaver-23.3.1.orig/pom.xml	2023-12-22 11:01:46.000000000 +0100
++++ dbeaver-23.3.1/pom.xml	2023-12-26 20:19:12.578436942 +0100
+@@ -11,7 +11,7 @@
+     <properties>
+         <dbeaver-version>23.3.1</dbeaver-version>
+         <dbeaver-product>DBeaver</dbeaver-product>
+-        <tycho-version>4.0.4</tycho-version>
++        <tycho-version>3.0.5</tycho-version>
+         <eclipse-version>2023-12</eclipse-version>
+         <eclipse-repo-url>https://download.eclipse.org/releases</eclipse-repo-url>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
