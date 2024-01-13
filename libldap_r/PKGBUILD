@@ -1,0 +1,15 @@
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+
+pkgname=libldap_r
+pkgver=2.6.6
+pkgrel=1
+pkgdesc='Symbolic link for libldap_r'
+arch=('any')
+url='https://www.openldap.org/'
+license=('GPL-3')
+depends=('libldap')
+
+package() {
+  install -d -m 755 "${pkgdir}/usr/lib"
+  ln -s libldap.so "${pkgdir}/usr/lib/libldap_r.so"
+}
