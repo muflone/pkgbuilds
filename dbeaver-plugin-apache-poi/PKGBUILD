@@ -1,18 +1,18 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=dbeaver-plugin-apache-poi
-pkgver=5.2.4
+pkgver=5.2.5
 pkgrel=1
 pkgdesc='DBeaver library for Microsoft Office documents'
 arch=('any')
 url='https://dbeaver.io/'
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('unzip')
 depends=('dbeaver>=4.2.5')
 source=("https://dbeaver.io/update/ce/latest/plugins/org.jkiss.bundle.apache.poi_${pkgver}.jar"
         "${pkgname}.info")
-sha256sums=('59061d440466b1869528adc1ee7c934421e9cae8008a8caa3801d34967ec3735'
-            '5a280fb2b234f76842c3e3a41d08cfecb0f159cf5ca322b3f0001755e7093150')
+sha256sums=('1f979af0c82db69228a116bce039a42f1a0984e4251bfd4e2f4c6ea63699f1de'
+            'fda06eb4854d7cd78bfca9df3954a5ec00b0143250b92a0565f29bcd2643085d')
 noextract=("org.jkiss.bundle.apache.poi_${pkgver}.jar")
 
 package() {
