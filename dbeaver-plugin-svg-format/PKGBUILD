@@ -1,20 +1,20 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=dbeaver-plugin-svg-format
-pkgver=1.0.156.202312122044
+pkgver=1.0.162.202403031740
 pkgrel=1
 pkgdesc='DBeaver plugin to save diagrams in SVG format'
 arch=('any')
 url='https://dbeaver.io/'
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('unzip')
 depends=('dbeaver>=4.2.5' 'dbeaver-plugin-batik')
 source=("https://dbeaver.io/update/ce/latest/plugins/org.jkiss.dbeaver.ext.ui.svg_${pkgver}.jar"
         "https://dbeaver.io/update/ce/latest/features/org.jkiss.dbeaver.ext.ui.svg.feature_${pkgver}.jar"
         "${pkgname}.info")
-sha256sums=('3f787c75a48abba65f6237d6698d72978d4b09536050dd46ec93ec76f95a6b86'
-            'bbb6a741ff0f518c691d5f02c1e60aef305a6c860a37d4832f493246ad6c558f'
-            '74406f995c19dc17d8b9c7c1f87417bbb3dee4ad9838c80f66d841adea7359a0')
+sha256sums=('416b2e67dda6da1faaf5780005e92e9d82111c4640b8b8604ff238b2f257cc65'
+            'ed1567e8bcc64337db2285eaed1825a79e07cec154a5106639ba5ffba7855ad5'
+            '39d978e183fa2941658abdffc8ef7b04fd683782e05e0f72a7a1bc6ebb1d486e')
 noextract=("org.jkiss.dbeaver.ext.ui.svg_${pkgver}.jar"
            "ui.svg.feature_${pkgver}.jar")
 
