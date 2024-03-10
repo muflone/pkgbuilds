@@ -1,24 +1,24 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=dbeaver-plugin-office
-pkgver=1.1.158.202312122044
-_featurever=1.1.157.202312122044
-_uiver=1.0.45.202312122044
+pkgver=1.1.164.202403031740
+_featurever=1.1.163.202403031740
+_uiver=1.0.51.202403031740
 pkgrel=1
 pkgdesc='DBeaver plugin to export data to Microsoft Office format'
 arch=('any')
 url='https://dbeaver.io/'
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('unzip')
 depends=('dbeaver>=4.2.5' 'dbeaver-plugin-apache-poi')
 source=("https://dbeaver.io/update/ce/latest/plugins/org.jkiss.dbeaver.data.office_${pkgver}.jar"
         "https://dbeaver.io/update/ce/latest/plugins/org.jkiss.dbeaver.data.office.ui_${_uiver}.jar"
         "https://dbeaver.io/update/ce/latest/features/org.jkiss.dbeaver.ext.office.feature_${_featurever}.jar"
         "${pkgname}.info")
-sha256sums=('295a2c084ea40f62254f6968837098b57d1d38dbb1fd870e7fc6db7d75b88d24'
-            'e843058c0507cfea9dfb622e81981da0786f0751ef4557642b27ea7b36dc6976'
-            'd7c6b25037148df90559072395349df50724c06f4811dd874652ef3a926692d3'
-            '37381b5b0df4beec8676b58769277a9d83957786003733cdef378d52d1f8a01b')
+sha256sums=('3e208d4b566c17b75aef915da4640f706317e2985a52cdc1dfef2e5b553d8aa8'
+            'f9276a76f4ae20fa26bfca02abcfa33d6645a58b59091f6bca52eb6369271f56'
+            'c333ffb3f9ebd6ee6c10bd39897f026c77974503431a425924cac61f1210b035'
+            '361bf41d7cfe61e888c6c2df937a24db8df7ca0019e0b23f77cf7a891b18399f')
 noextract=("org.jkiss.dbeaver.data.office_${pkgver}.jar"
            "org.jkiss.dbeaver.ext.office.feature_${_featurever}.jar")
 
