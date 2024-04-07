@@ -3,15 +3,15 @@
 pkgname=perl-data-uuid
 _perl_namespace=Data
 _perl_module=UUID
-pkgver=1.226
-pkgrel=4
+pkgver=1.227
+pkgrel=1
 pkgdesc="Globally/Universally Unique Identifiers (GUIDs/UUIDs)"
 arch=('x86_64')
-url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
-license=('BSD')
+url="https://github.com/bleargh45/${_perl_namespace}-${_perl_module}"
+license=('LicenseRef-custom')
 depends=('perl')
-source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('093d57ffa0d411a94bafafae495697db26f5c9d0277198fe3f7cf2be22996453')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/bleargh45/Data-UUID/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('0b8901706a0cedca2c3632ecdc46ec5f20118a4c60406b36e59286acd00043e3')
 options=('!emptydirs')
 
 build() {
