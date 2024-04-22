@@ -2,13 +2,13 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=24.0.2
+pkgver=24.0.3
 pkgrel=1
-_COMMON_COMMIT_ID='bad57b3814edbbcc5c0f8263a4ca64e802dc38e7'
+_COMMON_COMMIT_ID='28bf1386f7a8b67e76118447addbcdd21eadc264'
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
-license=("Apache")
+license=("Apache-2.0")
 depends=('java-runtime>=17' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
 makedepends=('maven' 'java-environment=17')
 optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format'
@@ -23,8 +23,8 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "${pkgname}.hook"
         "${pkgname}.install"
         "tycho_3_0_5.patch")
-sha256sums=('ae11d17a5888848f3b1ef6da331b12106acbedb25465d69881cf9ba421171b3e'
-            '6a011fbf874a2e7d1d7690e359a147a6e94ec741c504bea2a42a94552b39e4f5'
+sha256sums=('7fbabeda65f20b855a973badec13d265b5b24a7ff85a7bdfd37b9996d4cb0acc'
+            'e66353ad5924aaaaa0ca410909124f83a09cae204d9fa71476e55ea2ed13149c'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
