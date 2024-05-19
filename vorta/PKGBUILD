@@ -1,40 +1,35 @@
-# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
+
 pkgname=vorta
 pkgver=0.9.1
-pkgrel=3
-pkgdesc="A GUI for BorgBackup"
-_package="com.borgbase.Vorta"
+pkgrel=4
+pkgdesc="Desktop Client for Borg Backup"
 arch=('any')
-url="https://github.com/borgbase/vorta"
-license=('GPL')
-depends=('borg' 'python-appdirs' 'python-pyqt6' 'python-peewee' 'python-dateutil' 'python-secretstorage' 'python-psutil' 'python-llfuse' 'python-setuptools' 'qt6-svg')
-makedepends=('qt6-tools'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel')
-options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/borgbase/$pkgname/archive/v$pkgver.tar.gz")
+url="https://vorta.borgbase.com"
+license=('GPL-3.0-only')
+depends=('borg' 'hicolor-icon-theme' 'python-pyqt6' 'python-peewee'
+         'python-dateutil' 'python-secretstorage'  'python-setuptools'
+         'python-psutil' 'python-llfuse' 'python-platformdirs' 'qt6-svg')
+makedepends=('qt6-tools' 'python-build' 'python-installer' 'python-wheel')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/borgbase/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('0f627c2464bf1631711151464fe1ea59781f0c91a76cf5a081a5797a897f2929')
           
 build() {
-  cd "$pkgname-$pkgver"
-  #make translations-to-qm
+  cd "${pkgname}-${pkgver}"
+  # make translations-to-qm
   python -m build --no-isolation --wheel --skip-dependency-check
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python -m installer --destdir="${pkgdir:?}" dist/*.whl
-
-  install -Dm644 "package/icon-symbolic.svg" \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_package-symbolic.svg"
-  install -Dm644 "src/$pkgname/assets/icons/icon.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_package.svg"
-  install -Dm644 "src/$pkgname/assets/metadata/$_package.appdata.xml" -t \
-    "$pkgdir/usr/share/metainfo"
-  install -Dm644 "src/$pkgname/assets/metadata/$_package.desktop" -t \
-    "$pkgdir/usr/share/applications"
+  cd "${pkgname}-${pkgver}"
+  # Install wheel
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  # Install extra data
+  local _package="com.borgbase.Vorta"
+  install -m 644 -D "package/icon-symbolic.svg" "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/${_package}-symbolic.svg"
+  install -m 644 -D "src/vorta/assets/icons/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_package}.svg"
+  install -m 644 -D "src/vorta/assets/metadata/${_package}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
+  install -m 644 -D "src/vorta/assets/metadata/${_package}.desktop" -t "${pkgdir}/usr/share/applications"
 }
 
-# vim:set ts=2 sw=2 et:
