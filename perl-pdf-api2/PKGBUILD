@@ -8,16 +8,16 @@
 pkgname=perl-pdf-api2
 _perl_namespace=PDF
 _perl_module=API2
-pkgver=2.045
+pkgver=2.047
 pkgrel=1
 pkgdesc="Faciliates the creation and modification of PDF files"
 arch=('any')
 url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=('perl' 'perl-font-ttf')
 checkdepends=('perl-test-exception' 'perl-test-memory-cycle')
 source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('b6bdb4e0d0cd6526103fdd58c171e0560c36b843b7fe3ca4ddc9bb1e4c832406')
+sha256sums=('84d6318279d77844923e4de4275fe4345cd08b225edd7f9ed6a16f87a91aca39')
 options=('!emptydirs')
 
 build() {
