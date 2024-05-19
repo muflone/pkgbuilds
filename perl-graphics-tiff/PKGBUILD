@@ -1,23 +1,21 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=perl-graphics-tiff
-_perl_namespace=Graphics
-_perl_module=TIFF
-pkgver=20
-pkgrel=2
+pkgver=21
+pkgrel=1
 pkgdesc="Extension for the libtiff library"
 arch=('x86_64')
-url="https://metacpan.org/dist/${_perl_namespace}-${_perl_module}"
-license=('LGPL')
+url="https://metacpan.org/dist/Graphics-TIFF"
+license=('GPL-1.0-or-later' 'Artistic-1.0-Perl')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
 depends=('perl' 'libtiff')
-checkdepends=('perl-readonly' 'perl-test-requires' 'perl-test-deep')
-source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('3e55cc209465e064019a215a52f05ff51040297d020393fe9fb3de27ad020e35')
+checkdepends=('perl-readonly' 'perl-test-requires' 'perl-test-deep' 'imagemagick')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/carygravel/graphics-tiff/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f22b5b5885a99b0df14aacda60491aae4b5faa2253687ee19c77ed799ab7b1de')
 options=('!emptydirs')
 
 build() {
-  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  cd "${pkgname#perl-}-${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   perl Makefile.PL
@@ -25,14 +23,14 @@ build() {
 }
 
 check() {
-  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  cd "${pkgname#perl-}-${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   make test
 }
 
 package() {
-  cd "${_perl_namespace}-${_perl_module}-${pkgver}"
+  cd "${pkgname#perl-}-${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   make pure_install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
   # Delete unuseful files
