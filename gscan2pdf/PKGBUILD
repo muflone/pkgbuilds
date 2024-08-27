@@ -6,12 +6,12 @@
 # Contributor: Olaf Leidinger <leidola@newcon.de>
 
 pkgname=gscan2pdf
-pkgver=2.13.2
+pkgver=2.13.4
 pkgrel=1
 pkgdesc='A GUI with OCR capability to produce PDFs or DjVus from scanned documents'
 arch=('any')
 url='http://gscan2pdf.sourceforge.net/'
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('imagemagick' 'perl-config-general' 'perl-date-calc' 'perl-goocanvas2'
          'perl-gtk3-simplelist' 'perl-data-uuid'
          'perl-filesys-df' 'perl-html-parser' 'perl-list-moreutils'
@@ -23,11 +23,12 @@ optdepends=('djvulibre: DjVu image format'
             'gocr: OCR support'
             'xdg-utils: email as PDF'
             'tesseract: OCR support'
-            'cuneiform: OCR support'
             'pdftk: PDF encryption'
             'java-commons-lang: PDF encryption')
-source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('346cfa0d46bb4dd0a1a60c260fda5c19dbd8af747e16dde33cf489a726c25b84')
+source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
+sha256sums=('e07713915241b1c05bf00c5e37aa2b310155474c388457e41a1c503b33f79969'
+            'SKIP')
+validpgpkeys=('463293E4AE33871846F30227B321F203110FCAF3') # Jeffrey Ratcliffe
 options=('!emptydirs')
 
 build() {

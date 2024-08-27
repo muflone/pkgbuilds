@@ -1,0 +1,5 @@
+[gscan2pdf]
+source = "httpheader"
+url = "https://sourceforge.net/projects/gscan2pdf/files/latest/download"
+regex = 'gscan2pdf-(\d+\.\d+\.\d+).tar.xz'
+
