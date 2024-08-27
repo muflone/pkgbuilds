@@ -1,0 +1,3 @@
+[perl-cpanel-json-xs]
+source = "cpan"
+cpan = "Cpanel-JSON-XS"
