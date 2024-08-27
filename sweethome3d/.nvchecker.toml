@@ -1,0 +1,5 @@
+[sweethome3d]
+source = "regex"
+url = "https://sourceforge.net/projects/sweethome3d/rss?path=/SweetHome3D-source"
+regex = 'SweetHome3D-(\d+\.\d+)-src\.zip/download'
+

@@ -6,7 +6,7 @@
 # Contributor: Archan Paul <paul.archan@gmail.com>
 
 pkgname=sweethome3d
-pkgver=7.4
+pkgver=7.5
 pkgrel=1
 pkgdesc="An interior design application to draw the plan of your house in a 3D environment"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("SweetHome3D-${pkgver}-src.zip"::"https://downloads.sourceforge.net/${pk
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-sha256sums=('98987ad5a088441963e0d1afaaf39b8437f9880d3240dda73de4a19702dc502d'
+sha256sums=('735ce7c7b7291873432397b97ac341ef60499c1a47a108d64212c1ab91712c6d'
             '9e95ebf426abffe91fe3046e024796d0408fee2987a458fd2782dc0b75124e03'
             '5eea3337d956d773b05ddef69fe9d34b940ff550370dc92bf307f1b9a3957f9e'
             'ec0ad1a0671f708af68ced46bec1f4ab377e24ca1a0a9984867ee5fe484f57c5')
