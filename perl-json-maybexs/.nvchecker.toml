@@ -1,0 +1,3 @@
+[perl-json-maybexs]
+source = "cpan"
+cpan = "JSON-MaybeXS"
