@@ -5,18 +5,18 @@
 pkgname=perl-json-maybexs
 _perl_namespace=JSON
 _perl_module=MaybeXS
-pkgver=1.004005
-pkgrel=2
+pkgver=1.004008
+pkgrel=1
 pkgdesc="Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 depends=('perl')
 makedepends=('perl-test-needs' 'perl-cpanel-json-xs')
 optdepends=('perl-cpanel-json-xs: Using Cpanel-JSON-XS')
 options=('!emptydirs')
 url="https://metacpan.org/dist/${_perl_namespace}-${_perl_module}"
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('f5b6bc19f579e66b7299f8748b8ac3e171936dc4e7fcb72a8a257a9bd482a331')
+sha256sums=('cd3937afa78831f80a2ad5abab6c51b9e82fca4c31e5856ea208d598db5dc867')
 
 build() {
   cd "${_perl_namespace}-${_perl_module}-${pkgver}"
