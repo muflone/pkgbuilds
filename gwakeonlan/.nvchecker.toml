@@ -1,0 +1,3 @@
+[gwakeonlan]
+source = "git"
+git = "https://github.com/muflone/gwakeonlan.git"

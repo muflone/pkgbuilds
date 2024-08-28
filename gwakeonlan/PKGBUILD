@@ -3,7 +3,7 @@
 
 pkgname=gwakeonlan
 pkgver=0.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK+ utility to awake machines using the Wake on LAN."
 url="http://www.muflone.com/gwakeonlan/"
 arch=('any')
@@ -22,3 +22,4 @@ package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --optimize=1 --root "${pkgdir}"
 }
+
