@@ -2,8 +2,8 @@
 # Contributor: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=gwakeonlan
-pkgver=0.8.5
-pkgrel=3
+pkgver=0.8.6
+pkgrel=1
 pkgdesc="GTK+ utility to awake machines using the Wake on LAN."
 url="http://www.muflone.com/gwakeonlan/"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('python-setuptools' 'gettext')
 depends=('gtk3' 'python-xdg' 'python-gobject')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('098d6d2912b73067aa610b31e5bce9e5d76fa651e5eb02bb47577b488ac33e17')
+sha256sums=('0af6e1706e1ee7a5ec94ccd939b1ad2583c89d7878426199f86e625aee5bc127')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -22,4 +22,3 @@ package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --optimize=1 --root "${pkgdir}"
 }
-
