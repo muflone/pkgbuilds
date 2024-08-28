@@ -1,0 +1,5 @@
+[xca]
+source = "git"
+git = "https://github.com/chris2511/xca.git"
+include_regex = "RELEASE\\..*"
+prefix = "RELEASE."
