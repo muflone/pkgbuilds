@@ -1,0 +1,10 @@
+--- josm-19253.sh.orig	2024-11-01 17:48:34.926807291 +0100
++++ josm-19253.sh	2024-11-01 17:49:56.926936346 +0100
+@@ -89,7 +89,6 @@
+     JAVAFX_HOME="${JAVAFX_HOME:-/usr/share/openjfx/lib}"
+     JOSM_PATH="${JOSM_PATH:-/usr/share/${JOSM_VERSION}/${JOSM_VERSION}.jar}"
+     if [[ "${JAVA_VERSION}" -ge 11 ]]; then
+-        JAVA_OPTS="--module-path ${JAVAFX_HOME} --add-modules java.scripting,java.sql,javafx.controls,javafx.media,javafx.swing,javafx.web $JAVA_OPTS"
+         JAVA_OPTS="$JAVA_OPTS --add-exports=java.base/sun.security.action=ALL-UNNAMED"
+         JAVA_OPTS="$JAVA_OPTS --add-exports=java.desktop/com.sun.imageio.plugins.jpeg=ALL-UNNAMED"
+         JAVA_OPTS="$JAVA_OPTS --add-exports=java.desktop/com.sun.imageio.spi=ALL-UNNAMED"

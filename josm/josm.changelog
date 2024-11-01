@@ -1,3 +1,7 @@
+2024-11-11 Muflone <muflone@archlinux.org>-
+	* josm 19253-1
+	* Issue#3 - Module javafx.web not found on launch
+
 2024-09-10 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
 	* josm 19207-1
 

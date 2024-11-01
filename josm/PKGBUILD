@@ -1,8 +1,9 @@
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Contributor: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Michele Schäuble <mschaeuble@swissonline.ch>
 
 pkgname=josm
-pkgver=19207
+pkgver=19253
 pkgrel=1
 pkgdesc="An editor for OpenStreetMap written in Java"
 arch=('any')
@@ -14,11 +15,13 @@ changelog=$pkgname.changelog
 backup=('etc/conf.d/josm')
 source=(https://josm.openstreetmap.de/download/$pkgname-snapshot-$pkgver.jar
         $pkgname.conf.d
-        $pkgname::svn+https://josm.openstreetmap.de/svn/trunk#revision=$pkgver)
+        $pkgname::svn+https://josm.openstreetmap.de/svn/trunk#revision=$pkgver
+        remove_javafx.patch)
 noextract=($pkgname-snapshot-$pkgver.jar)
-sha512sums=('7de9b9f4a70cd3b4788254d4b1ab979df311362671d47ec53d8abf5324b32ecb8577ffc1b7619d51df8f8e901cbd4710bfa25e01cba3d8495fd741e53a7966af'
+sha512sums=('36d40422080cf6f14db53623796ce73d6c61f956916493021f2002146f8f254781caa3fd48c905f1f78b0baff63b51c6566620c2e5627f505e15b1a794dfc1f7'
             'd69e681a679378915f980ebafe204c548e0d76778962e4aa33afe8f83a1e6fe4438c7729a92634e02b195349a52a388f8933959c6b81c01ecc602d061ff7c8df'
-            'SKIP')
+            'SKIP'
+            '18e675fe998d01181c606eb414a72e55a4ded6ac3e4d89058ed654690e5b8821654ccaae2a6987003601ec918e62e91584e89b3b8a429ab0dfd92ab19fd9c4b4')
 
 package() {
   cd "${srcdir}"
@@ -46,14 +49,10 @@ package() {
   # Load our custom josm config at /etc/conf.d/josm (will append this to line 4 of the start script)
   sed -i '4 a[ -f /etc/conf.d/josm ] && . /etc/conf.d/josm' "${pkgdir}/usr/bin/josm"
 
+  # Remove JavaFX modules references not provided anymore by modern JVMs
+  patch -N -p1 --no-backup-if-mismatch "${pkgdir}/usr/bin/josm" "${srcdir}/remove_javafx.patch"
+
   # Add arch env vars to top of josm script
   # We do this to have a sane default in case the config file gets deleted.
   sed -i '4 aJOSM_PATH="/usr/share/java/josm/josm.jar"' "${pkgdir}/usr/bin/josm"
-
-  # This is a hack -- Arch puts the JavaFX modules in with the rest of the JVM
-  # modules, but the JVM doesn't automatically load them.
-  # Otherwise, we could remove the module-path for JAVAFX_HOME in the start
-  # script.
-  # sed -i 's/--module-path ${JAVAFX_HOME} //' "${pkgdir}/usr/bin/josm"
-  sed -i '5 aJAVAFX_HOME="$(shopt -s nullglob && echo /usr/lib/jvm/default-runtime/lib/javafx*.jar | tr " " ":")"' "${pkgdir}/usr/bin/josm"
 }
