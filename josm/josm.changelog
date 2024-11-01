@@ -1,0 +1,429 @@
+2024-09-10 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 19207-1
+
+2022-06-13 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 18463-1
+
+2022-04-26 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 18427-1
+
+2022-03-15 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 18387-1
+
+2022-02-26 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 18360-3
+	* FS#73773 - [josm] Unrecognized option with Java 8
+
+2022-02-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 18360-2
+	* FS#72953 - [josm] new runtime flags required
+
+2022-01-16 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 18360-1
+
+2021-11-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 18303-1
+
+2021-09-12 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 18193-1
+
+2021-08-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 18118-1
+
+2021-07-31 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 18004-1
+
+2021-06-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 17919-1
+
+2021-05-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 17833-1
+
+2021-04-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 17702-1
+
+2021-03-20 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 17580-1
+
+2020-12-29 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 17428-1
+
+2020-11-22 Jaroslav Lichtblau <svetlemodry@archlinux.org>-
+	* josm 17329-1
+
+2020-10-07 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 17084-1
+
+2020-09-09 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 17013-1
+
+2020-08-09 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 16812-1
+
+2020-07-06 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 16731-1
+
+2020-06-04 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 16538-1
+
+2020-04-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 16239-1
+
+2020-02-27 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15937-1
+
+2020-02-25 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15927-1
+
+2020-02-24 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15915-1
+
+2020-02-06 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15806-1
+
+2020-01-09 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15628-1
+
+2019-12-07 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15553-1
+
+2019-11-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15492-1
+
+2019-10-16 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15390-1
+
+2019-09-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15322-1
+
+2019-08-15 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15258-1
+
+2019-06-06 Balló György <ballogyor+arch at gmail dot com>
+	* josm 15155-2
+	* FS#62694 fix
+	* Use unique name for the snapshot jar
+	* Get man page, metainfo and icons from upstream source
+
+2019-06-06 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15155-1
+
+2019-06-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15150-1
+
+2019-05-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 15031-1
+
+2019-04-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 14945-1
+	* FS#60976 fix
+
+2019-03-06 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 14824-1
+
+2019-02-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 14760-1
+
+2019-01-01 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 14620-1
+
+2018-11-29 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 14460-1
+
+2018-10-29 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 14382-1
+
+2018-10-07 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 14289-1
+
+2018-09-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 14178-1
+
+2018-07-29 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 14066-1
+
+2018-07-14 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 14026-1
+
+2018-07-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 13996-1
+
+2018-06-13 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 13878-1
+
+2018-05-12 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 13710-1
+
+2018-04-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 13576-1
+
+2018-03-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 13500-1
+
+2018-03-01 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 13478-1
+
+2018-01-31 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 13367-1
+
+2018-01-04 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 13265-1
+
+2017-11-27 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 13170-1
+
+2017-11-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 13053-1
+
+2017-10-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 12921-1
+
+2017-09-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 12712-1
+
+2017-08-16 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 12545-1
+
+2017-08-01 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 12542-1
+
+2017-07-04 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 12450-1
+
+2017-05-29 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 12275-1
+
+2017-05-04 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 12039-1
+
+2017-04-03 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 11826-1
+
+2017-03-01 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 11639-1
+
+2017-02-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 11526-1
+
+2017-01-03 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 11427-1
+
+2017-01-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 11425-1
+
+2016-11-07 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 11223-1
+
+2016-09-06 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 10966-1
+
+2016-08-23 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 10786-3 FS#50479 fix
+
+2016-08-20 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 10786-2 FS#50245 fix
+
+2016-08-12 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 10786-1
+
+2016-07-12 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 10526-1
+
+2016-06-06 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 10327-1
+
+2016-06-01 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 10301-1
+
+2016-05-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 10168-1
+
+2016-04-28 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 10161-1
+
+2016-03-24 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 9979-1
+
+2016-03-12 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 9963-1
+
+2016-03-01 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 9900-1
+
+2016-01-07 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 9329-1
+
+2016-01-01 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 9229-1
+
+2015-11-24 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 9060-1
+
+2015-10-30 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 8969-1
+
+2015-09-30 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 8800-1
+
+2015-08-23 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 8677-1
+
+2015-06-17 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 8491-1
+
+2015-05-14 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 8339-1
+
+2015-04-27 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 8279-1
+
+2015-04-18 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 8159-1
+
+2015-03-03 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 8109-1
+
+2015-02-04 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 7995-1
+
+2014-12-29 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 7906-1
+
+2014-12-10 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 7777-1
+
+2014-10-22 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 7643-1
+
+2014-10-01 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 7588-1
+
+2014-09-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 7480-1
+
+2014-07-30 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 7347-1
+
+2014-07-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 7287-1
+
+2014-05-27 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 7182-1
+
+2014-04-27 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 7000-1
+
+2014-04-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 6950-1
+
+2014-01-29 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 6767-1
+
+2013-12-21 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 6502-1
+
+2013-11-17 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 6388-1
+	* fixed FS#37321 - [josm] JOSM restart command does not work
+
+2013-11-17 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 6383-1
+
+2013-09-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 6115-1
+
+2013-07-14 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 6060-1
+
+2013-06-15 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5990-1
+
+2013-05-18 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5939-1
+
+2013-04-20 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5836-1
+
+2013-03-12 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5759-1
+
+2013-02-16 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5697-1
+
+2012-12-16 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5608-1
+
+2012-11-18 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5576-1
+
+2012-10-22 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5531-1
+
+2012-09-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5485-1
+
+2012-07-30 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5356-1
+
+2012-07-22 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5353-1
+
+2012-07-07 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5315-1
+
+2012-06-10 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5267-1
+	* added support for max.heap value from /etc/conf.d/josm (thx to jose1711)
+
+2012-05-06 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5210-1
+
+2012-04-19 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5181-1
+
+2012-03-18 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 5047-1
+
+2012-02-20 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4878-1
+
+2011-12-25 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4667-1
+
+2011-12-17 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4666-1
+
+2011-11-07 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4550-1
+
+2011-10-23 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4487-2
+	* fixed FS#26168 - [josm] Missing icon
+
+2011-10-09 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4487-1
+
+2011-08-20 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4399-1
+
+2011-08-20 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4279-1
+
+2011-07-19 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4223-1
+
+2011-07-08 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4201-1
+
+2011-05-07 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4064-1
+
+2011-04-18 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 4021-1
+
+2011-03-09 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 3966-1
+
+2011-02-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* josm 3751-2
+	* moved to [community] with 105 AUR votes
