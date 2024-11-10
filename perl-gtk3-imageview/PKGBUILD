@@ -3,18 +3,18 @@
 pkgname=perl-gtk3-imageview
 _perl_namespace=Gtk3
 _perl_module=ImageView
-pkgver=10
-pkgrel=3
+pkgver=12
+pkgrel=1
 pkgdesc="Image viewer widget for Gtk3"
 arch=('any')
 url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
-license=('LGPL')
+license=('GPL-1.0-or-later' 'Artistic-1.0-Perl')
 depends=('perl-gtk3' 'imagemagick')
 checkdepends=('perl-test-exception' 'perl-test-memory-cycle' 'perl-try-tiny'
               'perl-readonly' 'perl-test-mockobject' 'perl-test-differences'
               'perl-test-deep' 'perl-carp-always' 'xorg-server-xvfb')
 source=("https://cpan.metacpan.org/authors/id/A/AS/ASOKOLOV/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha512sums=('2548c33c49c27bb4a69d5512c7dfaca096a39ef6d08fa1deb83a045e6c5b7ad075eb8b23b33fb794024c9b9e7fd979a5c31bff075a7ed5412a4a5a4f53824f5a')
+sha512sums=('894c8e0ab79412d1a1211252db619c5d98dce0548cd58eb2ff8b00001c48644659bc560a3e22714d4ef7265b0bd2509cbf4aa141830c40ff1e8db5f7938d9eb2')
 options=('!emptydirs')
 
 build() {
