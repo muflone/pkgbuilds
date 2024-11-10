@@ -2,18 +2,18 @@
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 
 pkgname=vorta
-pkgver=0.9.1
-pkgrel=4
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="Desktop Client for Borg Backup"
 arch=('any')
 url="https://vorta.borgbase.com"
 license=('GPL-3.0-only')
 depends=('borg' 'hicolor-icon-theme' 'python-pyqt6' 'python-peewee'
          'python-dateutil' 'python-secretstorage'  'python-setuptools'
-         'python-psutil' 'python-llfuse' 'python-platformdirs' 'qt6-svg')
+         'python-psutil' 'python-pyfuse3' 'python-platformdirs' 'qt6-svg')
 makedepends=('qt6-tools' 'python-build' 'python-installer' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/borgbase/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0f627c2464bf1631711151464fe1ea59781f0c91a76cf5a081a5797a897f2929')
+sha256sums=('4dce1ce42e1573468a9df0dd9182847abb88aafcb1d6af27470fd2d8352f3305')
           
 build() {
   cd "${pkgname}-${pkgver}"
