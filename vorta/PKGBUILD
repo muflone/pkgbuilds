@@ -3,7 +3,7 @@
 
 pkgname=vorta
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Client for Borg Backup"
 arch=('any')
 url="https://vorta.borgbase.com"
