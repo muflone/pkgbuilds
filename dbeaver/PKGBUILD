@@ -2,10 +2,10 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=24.3.1
+pkgver=24.3.2
 pkgrel=1
-_COMMON_COMMIT_ID='d5cd611ba96a83b637b295027953a211675b1331'
-_JDBC_LIBSQL_COMMIT_ID='c44b38017f76cc9030854afa91e1fdf997ba218b'
+_COMMON_COMMIT_ID='bc3c2e688a2578156efc42550ff750254dea0378'
+_JDBC_LIBSQL_COMMIT_ID='dc67e1440c64dd2da15707e14680087103e0a19f'
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
@@ -24,9 +24,9 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('ea86c43282fdb9479deeab73b5af4a546e83d09c030e2b3771472a96c7a605d3'
-            'f66c988d043bca1ae43c0f082daf6669e585e8d686ffef19eaec2a37f94acc68'
-            '2f5d8fec19d497a52948a00f4fb69e7b91cf0bea341751bec3ac08eed55f7cf7'
+sha256sums=('7f2f16566396f800a9345218eb4aecd5cf9e6611480454fc2372948c54c878aa'
+            '8ed55dffcea0c266e466559bba608086b16c3060d57d62b57e43c992db6983c2'
+            'a84bd6e105a0fe8ccafd506710c08cacd038f97ff1b5b83431287564efce2271'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
@@ -45,9 +45,6 @@ prepare() {
   ln -sf dbeaver-jdbc-libsql-${_JDBC_LIBSQL_COMMIT_ID} dbeaver-jdbc-libsql
 
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # Skip broken test.platform
-  sed -i '/org.jkiss.dbeaver.test.platform/d' test/pom.xml
 
   # Download dependencies during prepare FS#55873
   # https://bugs.archlinux.org/task/55873
