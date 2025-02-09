@@ -2,7 +2,7 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=24.3.3
+pkgver=24.3.4
 pkgrel=1
 _COMMON_COMMIT_ID='bc3c2e688a2578156efc42550ff750254dea0378'
 _JDBC_LIBSQL_COMMIT_ID='dc67e1440c64dd2da15707e14680087103e0a19f'
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('bbc25d468ebaf84e311a59d8d301f8e5ee18cc92f928890d2d38eef3a56bd2ed'
+sha256sums=('d895dcad2bbe5d0f962749d76b2c594fd6bfbeec1d6716127e61139416208184'
             '8ed55dffcea0c266e466559bba608086b16c3060d57d62b57e43c992db6983c2'
             'a84bd6e105a0fe8ccafd506710c08cacd038f97ff1b5b83431287564efce2271'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
