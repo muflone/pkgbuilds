@@ -3,7 +3,7 @@
 
 pkgname=texmaker
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free cross-platform LaTeX editor'
 arch=(x86_64)
 url='https://www.xm1math.net/texmaker/index.html'
