@@ -1,0 +1,32 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Federico Cinelli <cinelli@aur.archlinux.org>
+
+pkgname=texmaker
+pkgver=6.0.0
+pkgrel=1
+pkgdesc='Free cross-platform LaTeX editor'
+arch=(x86_64)
+url='https://www.xm1math.net/texmaker/index.html'
+license=(GPL-2.0-or-later)
+depends=(gcc-libs
+         glibc
+         qt6-5compat
+         qt6-base
+         qt6-declarative
+         qt6-webengine
+         texlive-basic)
+makedepends=(cmake
+             qt6-tools)
+optdepends=('ghostscript: LaTeX to HTML conversion command')
+source=(https://www.xm1math.net/$pkgname/$pkgname-$pkgver.tar.bz2)
+sha256sums=('977ce580e25c1ab6e0bc3da103be0b43ebf60b8ce0d27273104fdd7f586177fc')
+
+build() {
+  cmake -B build -S $pkgname-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
