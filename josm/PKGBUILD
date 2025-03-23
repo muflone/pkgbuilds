@@ -3,7 +3,7 @@
 # Contributor: Michele Schäuble <mschaeuble@swissonline.ch>
 
 pkgname=josm
-pkgver=19253
+pkgver=19342
 pkgrel=1
 pkgdesc="An editor for OpenStreetMap written in Java"
 arch=('any')
@@ -18,7 +18,7 @@ source=(https://josm.openstreetmap.de/download/$pkgname-snapshot-$pkgver.jar
         $pkgname::svn+https://josm.openstreetmap.de/svn/trunk#revision=$pkgver
         remove_javafx.patch)
 noextract=($pkgname-snapshot-$pkgver.jar)
-sha512sums=('36d40422080cf6f14db53623796ce73d6c61f956916493021f2002146f8f254781caa3fd48c905f1f78b0baff63b51c6566620c2e5627f505e15b1a794dfc1f7'
+sha512sums=('f7547abc3372b86596888cdb3cd9604385f7552530a0a47c4eee2d1a53c576a611b6ca8b3cc20eac44b4ebc720fdf53117ec34414fb5c186264f4585574d1356'
             'd69e681a679378915f980ebafe204c548e0d76778962e4aa33afe8f83a1e6fe4438c7729a92634e02b195349a52a388f8933959c6b81c01ecc602d061ff7c8df'
             'SKIP'
             '18e675fe998d01181c606eb414a72e55a4ded6ac3e4d89058ed654690e5b8821654ccaae2a6987003601ec918e62e91584e89b3b8a429ab0dfd92ab19fd9c4b4')
