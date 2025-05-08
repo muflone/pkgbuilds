@@ -7,7 +7,7 @@ pkgname=dbeaver-ce-bin
 pkgver=25.0.2
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://dbeaver.io/"
 license=("Apache-2.0")
 depends=('java-runtime>=17' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
