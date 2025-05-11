@@ -2,10 +2,10 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=25.0.3
+pkgver=25.0.4
 pkgrel=1
-_COMMON_COMMIT_ID='c4475ec7a6a3c26926e00d5d25aa3eb19327c5b2'
-_JDBC_LIBSQL_COMMIT_ID='61afd4214a8b0d5af90405eb82b607d57e8190e2'
+_COMMON_COMMIT_ID='44be4b17e73ef332f2ca0998f01c3fba5d5a8f8e'
+_JDBC_LIBSQL_COMMIT_ID='87d191ea6d6ead05622a64c35a4e3f6dec3b94c8'
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
@@ -24,9 +24,9 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('f53f33ebaa14900deedbe6568dfb061817fea9d960ca33ae75f21cdd1743658b'
-            'c0fab76d2fb1c01dfba4fe57d7f839c5868cca3219dff5a3be485d628dc43fb2'
-            '09fc0118524b3278da9d949e55840128f5204af383c7f4fc0e997db09a464dc4'
+sha256sums=('b793856a6639bdcc441b6788635d5707b72109edd3b17f4dae2172a47f253693'
+            '3582c2a1fa4b4b662e7f653986b21dcf6164ed41b23a9b121097f01157eaffe4'
+            'a4fec39881bc94d57b526c8101f4a91e8f7b04b4557d1a6b3b2bcd7cd1957a0c'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
@@ -70,6 +70,17 @@ package() {
   # Move into the target directory
   cd "target/products/org.jkiss.dbeaver.core.product/linux/gtk/${CARCH}"
 
+  # Removed different architectures libraries
+  for _dir in aix-ppc aix-ppc64 darwin-aarch64 darwin-x86-64 \
+    dragonflybsd-x86-64 freebsd-aarch64 freebsd-x86 freebsd-x86-64 \
+    linux-aarch64 linux-arm linux-armel linux-loongarch64 linux-mips64el \
+    linux-ppc linux-ppc64le linux-riscv64 linux-s390x linux-x86 \
+    openbsd-x86 openbsd-x86-64 \
+    sunos-sparc sunos-sparcv9 sunos-x86 sunos-x86-64 \
+    win32 win32-aarch64 win32-x86 win32-x86-64
+  do
+    rm -r "dbeaver/plugins/com.sun.jna_5.16.0.v20241222-1200/com/sun/jna/${_dir}"
+  done
   # Initially install everything into /usr/lib/dbeaver
   install -m 755 -d "${pkgdir}/usr/lib"
   cp -r "dbeaver" "${pkgdir}/usr/lib/${pkgname}"
