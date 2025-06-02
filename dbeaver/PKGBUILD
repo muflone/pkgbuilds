@@ -2,9 +2,9 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=25.0.5
+pkgver=25.1.0
 pkgrel=1
-_COMMON_COMMIT_ID='80a479e1d0e1f013b76ae6f19e513e24e460f747'
+_COMMON_COMMIT_ID='77b6aaa1bb748d8d09332a79173bd9e30028cebf'
 _JDBC_LIBSQL_COMMIT_ID='87d191ea6d6ead05622a64c35a4e3f6dec3b94c8'
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
@@ -24,8 +24,8 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('68005940b321c3427f2af748d801d3d3a1d653ab5a7dc8a50463d6a1a432c67c'
-            '7ed6df0a5542cba064ffa8dbaf2175b1ce6af775cc1c97de301d5dc6963261e0'
+sha256sums=('9283f26f36faf7f7ea50f0911b519f00c4cca3038199e9a5d0b5015cd6e601be'
+            '47f4b9af348f39a08d1d4ca1c789f807a11c8609609e4a04f0270c663267667e'
             'a4fec39881bc94d57b526c8101f4a91e8f7b04b4557d1a6b3b2bcd7cd1957a0c'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
