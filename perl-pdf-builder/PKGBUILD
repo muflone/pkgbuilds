@@ -4,16 +4,16 @@
 pkgname=perl-pdf-builder
 _perl_namespace=PDF
 _perl_module=Builder
-pkgver=3.026
+pkgver=3.027
 pkgrel=1
 pkgdesc="Facilitates the creation and modification of PDF files"
 arch=('any')
 url="https://metacpan.org/release/${_perl_namespace}-${_perl_module}"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=('perl' 'perl-font-ttf')
 checkdepends=('perl-test-exception' 'perl-test-memory-cycle')
 source=("https://www.cpan.org/modules/by-module/${_perl_namespace}/${_perl_namespace}-${_perl_module}-${pkgver}.tar.gz")
-sha256sums=('d9ff0003b4070ee8c4be6f4faba23a12b0c03778287c5d22f23cd9384bdfe890')
+sha256sums=('4f8629804c3b5105294fc791f56778eaa2e25c1edf4be6c5c14d38d6fcd47934')
 options=('!emptydirs')
 
 build() {
