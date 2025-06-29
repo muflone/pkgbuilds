@@ -4,15 +4,15 @@
 
 pkgname=mythes-pl
 epoch=1
-pkgver=0.8.68
-pkgrel=2
+pkgver=0.8.70
+pkgrel=1
 pkgdesc='Polish thesaurus'
 arch=('any')
 url='https://dobryslownik.pl/pobierz/'
 license=('LGPL-3.0-only')
 optdepends=('libmythes: offers thesaurus library functions')
-source=("https://sources.archlinux.org/other/packages/mythes-pl/pl-dict-latest-${pkgver}.oxt")
-sha256sums=('9583aa42893ed22989e08ed52207cb757f6b5966a3f2cd0e34b86deb825549d5')
+source=("pl-dict-latest-${pkgver}.oxt"::"https://pobierz.dobryslownik.pl/pl-dict-latest.oxt")
+sha256sums=('2e2fb426728420c9b7506df32659391022623dd531ea4eb5b09527a4b7968ca9')
 
 package() {
   install -dm755 "${pkgdir}"/usr/share/mythes
