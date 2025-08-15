@@ -1,1 +1,2 @@
-org.jkiss.bundle.apache.poi,5.2.5,plugins/org.jkiss.bundle.apache.poi_5.2.5/,4,false
+org.apache.commons.commons-compress,1.28.0,plugins/org.apache.commons.commons-compress_1.28.0.jar,4,false
+org.jkiss.bundle.apache.poi,5.4.1,plugins/org.jkiss.bundle.apache.poi_5.4.1.jar,4,false
