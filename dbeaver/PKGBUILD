@@ -2,10 +2,10 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=25.1.4
+pkgver=25.1.5
 pkgrel=1
-_COMMON_COMMIT_ID='13790279846bc74f3da46c7ca8e4f306459d2f46'
-_JDBC_LIBSQL_COMMIT_ID='a2c75c1b60a8c4b24fbaa47a24f447e27a0be75d'
+_COMMON_COMMIT_ID='04d4c07a9d3cb5ad37c83ad8879402cb12c4b52c'
+_JDBC_LIBSQL_COMMIT_ID='55fec96827d49eab8bc3c5b82c92e139805a6e40'
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
@@ -14,19 +14,21 @@ depends=('java-runtime>=21' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
 makedepends=('maven' 'java-environment>=21')
 optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format'
             'dbeaver-plugin-svg-format: save diagrams in SVG format')
-conflicts=('dbeaver-plugin-sshj-lib')
-replaces=('dbeaver-plugin-sshj-lib')
+conflicts=('dbeaver-plugin-sshj-lib' 'dbeaver-plugin-apache-poi' 'dbeaver-plugin-office')
+replaces=('dbeaver-plugin-sshj-lib' 'dbeaver-plugin-apache-poi' 'dbeaver-plugin-office')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archive/${pkgver}.tar.gz"
         "dbeaver-common-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver-common/archive/${_COMMON_COMMIT_ID}.tar.gz"
         "dbeaver-jdbc-libsql-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver-jdbc-libsql/archive/${_JDBC_LIBSQL_COMMIT_ID}.tar.gz"
+        "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar"
         "io.${pkgname}.DBeaver.desktop"
         "${pkgname}.sh"
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('1b29b227a452931af9a18811675a8057925ac0319980bad0137365732197b3b2'
-            '06c0ce393f1ae6d3d777d95dee9153d1cf71b3f1c238e7ae259a98678924cccc'
-            'bbd44216d6c28101e244dc21072012f6c35ab5ba786ab00f46bd248b4f86fc70'
+sha256sums=('8eccd52039bf41a61716815311cf19f2f6f6df60cfbbba1d064fedc298a00fc4'
+            '2d5a5c9f693a0bd0f277f09a76edf8de5639c97a47bca59d76f58b6a94c874d2'
+            'fe9c59540c6fd9724ad6414704019de9ebd69035d2421bf809742070fe2c02df'
+            'e1522945218456f3649a39bc4afd70ce4bd466221519dba7d378f2141a4642ca'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
@@ -49,13 +51,17 @@ prepare() {
   # Download dependencies during prepare FS#55873
   # https://bugs.archlinux.org/task/55873
   export MAVEN_OPTS="-Xmx2048m"
-  mvn --batch-mode validate
+  mvn --batch-mode -T 1C validate
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  cd "product/aggregate"
-  mvn --batch-mode -Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 package
+  pushd "product/aggregate"
+  mvn --batch-mode -Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -T 1C package
+  popd
+  # Add missing dependency org.apache.commons.commons-compress
+  install -m 644 "${srcdir}/commons-compress-1.28.0.jar" \
+    "product/repositories/org.jkiss.dbeaver.ce.repository/target/repository/plugins/org.apache.commons.commons-compress_1.28.0.jar"
 }
 
 package() {
@@ -131,4 +137,24 @@ package() {
   install -m 755 -d "${pkgdir}/etc/${pkgname}/bundles.d"
   mv "bundles.info" "${pkgdir}/etc/${pkgname}/bundles.d/00-${pkgname}.info"
   ln -s "/etc/${pkgname}/bundles.info" .
+
+  # Add extra plugins
+  cd "${srcdir}/${pkgname}-${pkgver}/product/repositories/org.jkiss.dbeaver.ce.repository/target/repository"
+  _install_plugin "dbeaver-plugin-apache-poi" "org.apache.commons.commons-compress"
+  _install_plugin "dbeaver-plugin-apache-poi" "org.jkiss.bundle.apache.poi"
+  _install_plugin "dbeaver-plugin-office" "org.jkiss.dbeaver.data.office"
+  _install_plugin "dbeaver-plugin-office" "org.jkiss.dbeaver.data.office.ui"
+}
+
+_install_plugin() {
+  _bundle="$1"
+  _plugin="$2"
+  _file="$(echo plugins/${_plugin}_*.jar)"
+  # Find plugin version from filename
+  _version="${_file##*_}"
+  _version="${_version%.jar}"
+  # Install plugin
+  install -m 644 ${_file} "${pkgdir}/usr/lib/${pkgname}/plugins"
+  # Add plugin information to bundles
+  echo "${_plugin},${_version},${_file},4,false" >> "${pkgdir}/etc/dbeaver/bundles.d/20-${_bundle}.info"
 }
