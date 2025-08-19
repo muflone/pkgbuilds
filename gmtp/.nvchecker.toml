@@ -1,0 +1,5 @@
+[gmtp]
+source = "httpheader"
+url = "https://sourceforge.net/projects/gmtp/files/latest/download"
+regex = 'gmtp-(\d+\.\d+\.\d+).tar.gz'
+
