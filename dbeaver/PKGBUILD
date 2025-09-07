@@ -2,18 +2,16 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=25.1.5
+pkgver=25.2.0
 pkgrel=1
-_COMMON_COMMIT_ID='04d4c07a9d3cb5ad37c83ad8879402cb12c4b52c'
-_JDBC_LIBSQL_COMMIT_ID='55fec96827d49eab8bc3c5b82c92e139805a6e40'
+_COMMON_COMMIT_ID='841df28403631384669138883b8a3550ddd07f88'
+_JDBC_LIBSQL_COMMIT_ID='db7a8052b99ade708e45955807e528af8c1ee13a'
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
 license=("Apache-2.0")
 depends=('java-runtime>=21' 'gtk3' 'gtk-update-icon-cache' 'libsecret')
 makedepends=('maven' 'java-environment>=21')
-optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format'
-            'dbeaver-plugin-svg-format: save diagrams in SVG format')
 conflicts=('dbeaver-plugin-sshj-lib' 'dbeaver-plugin-apache-poi' 'dbeaver-plugin-office')
 replaces=('dbeaver-plugin-sshj-lib' 'dbeaver-plugin-apache-poi' 'dbeaver-plugin-office')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archive/${pkgver}.tar.gz"
@@ -24,16 +22,20 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "${pkgname}.sh"
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
-        "${pkgname}.install")
-sha256sums=('8eccd52039bf41a61716815311cf19f2f6f6df60cfbbba1d064fedc298a00fc4'
-            '2d5a5c9f693a0bd0f277f09a76edf8de5639c97a47bca59d76f58b6a94c874d2'
-            'fe9c59540c6fd9724ad6414704019de9ebd69035d2421bf809742070fe2c02df'
+        "${pkgname}.install"
+        "2a5d4c8.patch"::"https://github.com/dbeaver/dbeaver/commit/2a5d4c8dbdbdf8a85bd47265f29642519ad6b25e.diff"
+        "c15e81f.patch"::"https://github.com/dbeaver/dbeaver/commit/c15e81f007bcd9f3b2355728d0eaf7906d4ef125.diff")
+sha256sums=('90b470e819b723b4461ddac395bba74dedd53103f5dd534cf6bb35b862c7cc10'
+            '1015f173777a094ea4afef6cfd8ddee76910a0599d7e036019563e402a6eb785'
+            '90b17ab3f6be91e8c3043091fe8c3ba4fcce7fe63152955013067e35b511a901'
             'e1522945218456f3649a39bc4afd70ce4bd466221519dba7d378f2141a4642ca'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
             'f8b763ca210bfa4d9a4e407b656ba4f5d1bf2f3f54c67044f7a4dd0c3625fc22'
-            'f8d65dd933049b587a5815ea75a30ef944300b812df383ca1c2dcd68280bc7ab')
+            'f8d65dd933049b587a5815ea75a30ef944300b812df383ca1c2dcd68280bc7ab'
+            '586a37d31ca5b943ea5384ac8332a4a9ed26641c311dd8e2d74dd3935521b0bb'
+            'f333ae86562d8dc2d24e0d55833d871eec6596c58317bfa19dd18fb6fed0059c')
 install="${pkgname}.install"
 
 prepare() {
@@ -48,6 +50,9 @@ prepare() {
 
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  # Backport fixes
+  patch -p1 -i "${srcdir}/2a5d4c8.patch"
+  patch -p1 -i "${srcdir}/c15e81f.patch"
   # Download dependencies during prepare FS#55873
   # https://bugs.archlinux.org/task/55873
   export MAVEN_OPTS="-Xmx2048m"
