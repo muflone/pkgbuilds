@@ -3,7 +3,7 @@
 
 pkgname=dbeaver
 pkgver=25.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
@@ -16,6 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "dbeaver-common-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver-common/archive/release_${pkgver//./_}.tar.gz"
         "dbeaver-jdbc-libsql-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver-jdbc-libsql/archive/release_${pkgver//./_}.tar.gz"
         "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar"
+        "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.19.0/commons-lang3-3.19.0.jar"
         "io.${pkgname}.DBeaver.desktop"
         "${pkgname}.sh"
         "${pkgname}.profile.gz"
@@ -25,6 +26,7 @@ sha256sums=('05e43c27798ac406f546cd422d784ae1f4faf94863164e39eac94700aa61b3a9'
             '3c33e560f0fe7721bc480693b717f5cb53460c4817d8660950dd891fe1f6e575'
             '9ccc357ed5f2e227e43c3e2300f4d267c0b504ae24ce2c137aa33d77357da062'
             'e1522945218456f3649a39bc4afd70ce4bd466221519dba7d378f2141a4642ca'
+            '32733ab4bc90b45b63eb72677d886961003fd4ed113e07b1028f9877cb2ac735'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
@@ -58,6 +60,9 @@ build() {
   # Add missing dependency org.apache.commons.commons-compress
   install -m 644 "${srcdir}/commons-compress-1.28.0.jar" \
     "product/repositories/org.jkiss.dbeaver.ce.repository/target/repository/plugins/org.apache.commons.commons-compress_1.28.0.jar"
+  # Add missing dependency org.apache.commons.lang3
+  install -m 644 "${srcdir}/commons-lang3-3.19.0.jar" \
+    "product/repositories/org.jkiss.dbeaver.ce.repository/target/repository/plugins/org.apache.commons.lang3_3.19.0.jar"
 }
 
 package() {
@@ -137,6 +142,7 @@ package() {
   # Add extra plugins
   cd "${srcdir}/${pkgname}-${pkgver}/product/repositories/org.jkiss.dbeaver.ce.repository/target/repository"
   _install_plugin "dbeaver-plugin-apache-poi" "org.apache.commons.commons-compress"
+  _install_plugin "dbeaver-plugin-apache-poi" "org.apache.commons.lang3"
   _install_plugin "dbeaver-plugin-apache-poi" "org.jkiss.bundle.apache.poi"
   _install_plugin "dbeaver-plugin-office" "org.jkiss.dbeaver.data.office"
   _install_plugin "dbeaver-plugin-office" "org.jkiss.dbeaver.data.office.ui"
