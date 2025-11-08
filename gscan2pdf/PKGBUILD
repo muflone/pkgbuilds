@@ -6,7 +6,7 @@
 # Contributor: Olaf Leidinger <leidola@newcon.de>
 
 pkgname=gscan2pdf
-pkgver=2.13.4
+pkgver=2.13.5
 pkgrel=1
 pkgdesc='A GUI with OCR capability to produce PDFs or DjVus from scanned documents'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=('djvulibre: DjVu image format'
             'pdftk: PDF encryption'
             'java-commons-lang: PDF encryption')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('e07713915241b1c05bf00c5e37aa2b310155474c388457e41a1c503b33f79969'
+sha256sums=('0d4304f6723d076f868feb013e3d7be925dfbb10dcdc23177dbcbf6606b7d5fa'
             'SKIP')
 validpgpkeys=('463293E4AE33871846F30227B321F203110FCAF3') # Jeffrey Ratcliffe
 options=('!emptydirs')
