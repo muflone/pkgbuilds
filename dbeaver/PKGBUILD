@@ -2,7 +2,7 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=25.2.5
+pkgver=25.3.0
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
@@ -22,9 +22,9 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('eb4d6a751486c6c858176462d13c1d58d98876087725ee9acea0e7801d850330'
-            '623051a477ec49b7fd0b3c5154526cf93f1b51f9be4c54721f6167c61508466b'
-            'f73cbedc4301fa4c6bc7b233a4ea840acac59e2973264b3ad7d6013e551505ec'
+sha256sums=('66217c72417000d3dc49e0d49c9509391f53875fd209b2c4248d2902295e74a1'
+            '8d7d01755dc7f0bef62e4e72cb49d591c21d7487ea42a54925d19ff630bc639f'
+            'fddfa4f59e177ca2381b8d96988f7d54b7f4dd388dfa23224948e7631142fc8b'
             'e1522945218456f3649a39bc4afd70ce4bd466221519dba7d378f2141a4642ca'
             '32733ab4bc90b45b63eb72677d886961003fd4ed113e07b1028f9877cb2ac735'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
@@ -55,7 +55,7 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
   pushd "product/aggregate"
-  mvn --batch-mode -Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -T 1C package
+  mvn --batch-mode -Pall-platforms -Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -T 1C package
   popd
   # Add missing dependency org.apache.commons.commons-compress
   install -m 644 "${srcdir}/commons-compress-1.28.0.jar" \
@@ -86,7 +86,7 @@ package() {
     sunos-sparc sunos-sparcv9 sunos-x86 sunos-x86-64 \
     win32 win32-aarch64 win32-x86 win32-x86-64
   do
-    rm -r "dbeaver/plugins/com.sun.jna_5.17.0.v20250316-1700/com/sun/jna/${_dir}"
+    rm -r "dbeaver/plugins/com.sun.jna_5.18.1.v20251001-0800/com/sun/jna/${_dir}"
   done
   # Initially install everything into /usr/lib/dbeaver
   install -m 755 -d "${pkgdir}/usr/lib"
