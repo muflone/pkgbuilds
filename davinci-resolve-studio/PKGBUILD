@@ -1,6 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Alex S. <shantanna_at_hotmail_dot_com>
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
+# Contributor: "PoorPockets McNewHold" G.K <davinciresolvepkgali.4rv1u@passmail.net>
 
 # Hardware support is limited. Nvidia cards should work fine.
 # If you're running a hybrid setup, try with primusrun/optirun.
@@ -11,7 +12,7 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve-studio
-pkgver=20.2.3
+pkgver=20.3
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 arch=('x86_64')
@@ -25,7 +26,7 @@ makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('502b9fc836bc8b9f697585a70d0eef50e20069ce4fe9c356da353391775f0e20'
+sha256sums=('6a98f171683ad35039cd41464ef08e3afb713fc9fe11ba2d8a23600092ec79a8'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
@@ -173,4 +174,3 @@ package() {
     "share/etc/udev/rules.d"/{99-BlackmagicDevices.rules,99-ResolveKeyboardHID.rules,99-DavinciPanel.rules}
   popd
 }
-
