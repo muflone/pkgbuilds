@@ -2,7 +2,7 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=25.3.1
+pkgver=25.3.2
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
@@ -22,9 +22,9 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archi
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
         "${pkgname}.install")
-sha256sums=('60270e78ad2e826ac3c5e8a6401e98322b53de4ab3a5d48165d0db0cf3b55b91'
-            'a1da3635a6b4c2af25aeecb57bbcf4a3a5aa58034999afb788e0d45541456f0b'
-            '6b75d3fd14b5cf57553dabff11d0ab4a9a19be017d149e8e94808bcb6eeb6313'
+sha256sums=('2683033e4e2b993a3419df43f78df612db0dadf9576a7e843c9ca7ba43236bc5'
+            'c567832ff86d9590f5fc30ea3cf22284947ed7176433af85d2c20bf154eda406'
+            '6a18f2f28f889f2300f918492523bf9c0e583060ec023a466bd45655546c8598'
             'e1522945218456f3649a39bc4afd70ce4bd466221519dba7d378f2141a4642ca'
             '32733ab4bc90b45b63eb72677d886961003fd4ed113e07b1028f9877cb2ac735'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
