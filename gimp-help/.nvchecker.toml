@@ -1,0 +1,5 @@
+[gimp-help]
+source = "regex"
+url = "https://download.gimp.org/gimp/help/"
+regex = 'gimp-help-(\d+\.\d+\.\d+).tar.bz2'
+
