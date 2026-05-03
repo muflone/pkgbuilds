@@ -2,27 +2,67 @@
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 
 pkgname=vorta
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Desktop Client for Borg Backup"
 arch=('any')
 url="https://vorta.borgbase.com"
 license=('GPL-3.0-only')
-depends=('borg' 'hicolor-icon-theme' 'python-pyqt6' 'python-peewee'
-         'python-dateutil' 'python-secretstorage'  'python-setuptools'
-         'python-psutil' 'python-pyfuse3' 'python-platformdirs' 'qt6-svg')
-makedepends=('qt6-tools' 'python-build' 'python-installer' 'python-wheel')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/borgbase/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a05813e77d750ba9eaa8678e516e6138a011026b24419be6b86b2fb618c5deda')
-          
+depends=(
+  'borg'
+  'hicolor-icon-theme'
+  'python'
+  'python-peewee'
+  'python-platformdirs'
+  'python-psutil'
+  'python-pyqt6'
+  'python-secretstorage'
+  'qt6-svg'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+  'qt6-tools'
+)
+checkdepends=(
+  'dbus'
+  'openssh'
+  'python-pytest'
+  'python-pytest-mock'
+  'python-pytest-qt'
+  'xorg-server-xvfb'
+)
+source=(
+  "git+https://github.com/borgbase/vorta.git#tag=v${pkgver}"
+  "${pkgname}-mock-borg-alert-in-tests.patch"
+)
+b2sums=('e0db79d6253b2a763549dc38c7ddae8d3b86842a84b3987d50e4711245df0f4fb9cddcadd36b1d86135286ec81e9067e8c9e72495a1d4589b895181fb903b779'
+        'e97dc6270215dd7fc4984754981dff468b6bebad3a04cc173c7e45f48d599d605c9dd10cf02909edbccf150ea3c0def972457eb734a56a8135d6edc284a5cb5b')
+
+prepare() {
+  cd "${pkgname}"
+  patch -Np1 < ../${pkgname}-mock-borg-alert-in-tests.patch
+}
+
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   # make translations-to-qm
   python -m build --no-isolation --wheel --skip-dependency-check
 }
 
+check() {
+  cd "${pkgname}"
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  xvfb-run --server-args="-screen 0 1024x768x24+32" -a dbus-run-session -- \
+    test-env/bin/python -m pytest tests/unit
+}
+
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   # Install wheel
   python -m installer --destdir="${pkgdir}" dist/*.whl
   # Install extra data
@@ -32,4 +72,3 @@ package() {
   install -m 644 -D "src/vorta/assets/metadata/${_package}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
   install -m 644 -D "src/vorta/assets/metadata/${_package}.desktop" -t "${pkgdir}/usr/share/applications"
 }
-

@@ -1,0 +1,32 @@
+From e077f8f3cdcba656c041f5e1f8a5c593072afe77 Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carsme@archlinux.org>
+Date: Sat, 14 Mar 2026 15:35:14 +0100
+Subject: [PATCH] Mock _alert_missing_borg in tests to prevent blocking dialog
+
+BorgVersionJob may fail to detect borg in test environments due to non-blocking
+I/O race conditions on Python 3.14+, triggering a blocking QMessageBox.exec()
+modal dialog that hangs the test suite. Mock it as a no-op in conftest.
+
+Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+---
+ tests/conftest.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 4682720f..4352477d 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -77,6 +77,10 @@ def qapp(tmpdir_factory):
+ 
+     from vorta.application import VortaApp
+ 
++    # Prevent _alert_missing_borg from opening a blocking modal dialog during tests.
++    # BorgVersionJob may fail to detect borg due to non-blocking I/O race conditions.
++    VortaApp._alert_missing_borg = lambda self: None
++
+     qapp = VortaApp([])  # Only init QApplication once to avoid segfaults while testing.
+ 
+     yield qapp
+-- 
+2.53.0
+
