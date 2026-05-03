@@ -2,7 +2,7 @@
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 
 pkgname=vorta
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="Desktop Client for Borg Backup"
 arch=('any')
@@ -39,7 +39,7 @@ source=(
   "git+https://github.com/borgbase/vorta.git#tag=v${pkgver}"
   "${pkgname}-mock-borg-alert-in-tests.patch"
 )
-b2sums=('e0db79d6253b2a763549dc38c7ddae8d3b86842a84b3987d50e4711245df0f4fb9cddcadd36b1d86135286ec81e9067e8c9e72495a1d4589b895181fb903b779'
+b2sums=('b469b294f1baba20c76e897581653204158f7cd9a9bc7456ee37245f8942fe284a366ebab40a3b71cedc15d429808a1c2eeb5a64952d6bf4e96ef7d32d04c618'
         'e97dc6270215dd7fc4984754981dff468b6bebad3a04cc173c7e45f48d599d605c9dd10cf02909edbccf150ea3c0def972457eb734a56a8135d6edc284a5cb5b')
 
 prepare() {
