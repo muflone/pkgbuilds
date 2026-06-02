@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=SmartSVN
+Comment=A graphical Subversion client
+Comment[de]=Ein grafischer Subversion Client
+Exec=smartsvn
+Icon=smartsvn
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Development;
+StartupWMClass=SmartSVN
+MimeType=application/smartsvn;application/x-smartsvn;
