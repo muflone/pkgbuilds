@@ -7,7 +7,7 @@
 
 pkgname=gscan2pdf
 pkgver=2.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A GUI with OCR capability to produce PDFs or DjVus from scanned documents'
 arch=('any')
 url='http://gscan2pdf.sourceforge.net/'
@@ -20,7 +20,6 @@ depends=('imagemagick' 'perl-config-general' 'perl-date-calc' 'perl-goocanvas2'
          'perl-try-tiny' 'perl-pdf-builder' 'perl-gtk3-imageview' 'unpaper'
          'perl-graphics-tiff')
 optdepends=('djvulibre: DjVu image format'
-            'gocr: OCR support'
             'xdg-utils: email as PDF'
             'tesseract: OCR support'
             'pdftk: PDF encryption'
@@ -46,6 +45,4 @@ package() {
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
   mv "${pkgdir}/usr/bin/vendor_perl/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   # Delete unuseful files
-  find "${pkgdir}" -name '.packlist' -delete
-  find "${pkgdir}" -name '*.pod' -delete
 }
