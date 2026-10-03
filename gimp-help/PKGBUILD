@@ -3,7 +3,7 @@
 
 pkgbase=gimp-help
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://docs.gimp.org/'
 license=('GFDL-1.2-or-later')
@@ -51,6 +51,7 @@ _package() {
   _locale="$1"
   _language="$2"
   pkgdesc="${_language} help files for Gimp"
+  provides=("gimp-help=${pkgver}-${pkgrel}")
   install -dm755 "${pkgdir}/usr/share/gimp/3.0/help/${_locale}"
   cp -rL "${srcdir}/${pkgbase}-${pkgver}/html/${_locale}" \
     "${pkgdir}/usr/share/gimp/3.0/help"
