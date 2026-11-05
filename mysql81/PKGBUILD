@@ -16,7 +16,7 @@ makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'systemd-libs' 'libaio'
              'libfido2' 're2' 'rapidjson')
 license=('GPL-2.0-only')
 url="https://www.mysql.com/products/community/"
-source=("https://cdn.mysql.com/Downloads/MySQL-8.1/${_pkgbase}-boost-${pkgver}.tar.gz"
+source=("https://cdn.mysql.com/archives/mysql-8.1/${_pkgbase}-boost-${pkgver}.tar.gz"
         "my-default.cnf"
         "mysql-ld.so.conf"
         "mysql.sysconfig"

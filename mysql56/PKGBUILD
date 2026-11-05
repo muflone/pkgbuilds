@@ -14,7 +14,7 @@ makedepends=('zlib' 'cmake' 'systemd-tools' 'systemd-libs' 'libaio' 'jemalloc')
 license=('GPL')
 url="https://www.mysql.com/products/community/"
 options=('!libtool')
-source=("https://dev.mysql.com/get/Downloads/MySQL-5.6/${_pkgname}-${pkgver}.tar.gz"
+source=("https://cdn.mysql.com/archives/mysql-5.6/${_pkgname}-${pkgver}.tar.gz"
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
         "mysqld.service"
