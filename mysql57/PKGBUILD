@@ -16,7 +16,7 @@ _boost_ver=1.59.0
 license=('GPL')
 url="https://www.mysql.com/products/community/"
 options=('!libtool' '!lto')
-source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${_pkgname}-${pkgver}.tar.gz"
+source=("https://cdn.mysql.com/archives/mysql-5.7/${_pkgname}-${pkgver}.tar.gz"
         "http://sourceforge.net/projects/boost/files/boost/${_boost_ver}/boost_${_boost_ver//./_}.tar.gz"
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
