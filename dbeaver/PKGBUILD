@@ -2,9 +2,9 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=dbeaver
-pkgver=26.2.2
+pkgver=26.2.5.1
 pkgrel=1
-_DATADAM_API_COMMIT_ID='afb5477ab9ab6f90ba8aad27fb0231c6e1727ca3'
+_DATADAM_API_COMMIT_ID='9bf5638f2d35183b06c5a0a86a612ad49cb2b54c'
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
@@ -14,22 +14,18 @@ makedepends=('maven' 'java-environment>=21')
 conflicts=('dbeaver-plugin-sshj-lib' 'dbeaver-plugin-apache-poi' 'dbeaver-plugin-office')
 replaces=('dbeaver-plugin-sshj-lib' 'dbeaver-plugin-apache-poi' 'dbeaver-plugin-office')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver/archive/${pkgver}.tar.gz"
-        "dbeaver-common-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver-common/archive/release_${pkgver//./_}.tar.gz"
-        "dbeaver-jdbc-libsql-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver-jdbc-libsql/archive/release_${pkgver//./_}.tar.gz"
+        "dbeaver-common-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver-common/archive/${pkgver}.tar.gz"
+        "dbeaver-jdbc-libsql-${pkgver}.tar.gz"::"https://github.com/dbeaver/dbeaver-jdbc-libsql/archive/${pkgver}.tar.gz"
         "datadam-api-${_DATADAM_API_COMMIT_ID}.tar.gz"::"https://github.com/dbeaver/datadam-api/archive/${_DATADAM_API_COMMIT_ID}.tar.gz"
-        "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.28.0/commons-compress-1.28.0.jar"
-        "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.19.0/commons-lang3-3.19.0.jar"
         "io.${pkgname}.DBeaver.desktop"
         "${pkgname}.sh"
         "${pkgname}.profile.gz"
         "${pkgname}.hook"
         "${pkgname}-remove.hook")
-sha256sums=('942448e9bcc541f69fc929088ebc2167e01f2541fcf441547ecdd0adbc7c223d'
-            '7ed6491e052543e730669faca99a7ba93fb14faf09680d4bdf648505dec2498f'
-            'eca04f51261e16fd2a0ebd1e51d311f372c859ce072872a7900d0e737751128d'
-            '043b6dd35b7462b56a84a49ca351cf40008cb1412cb991b90165b4089df1d4fb'
-            'e1522945218456f3649a39bc4afd70ce4bd466221519dba7d378f2141a4642ca'
-            '32733ab4bc90b45b63eb72677d886961003fd4ed113e07b1028f9877cb2ac735'
+sha256sums=('078dcfbe2feb2200b9c76d5a8772efead8712b0a9b363dadb3871e6c744b0265'
+            '1c4ce7155198cb5b09c4c8d8a76a48a546b9f5c589dc17dbf5a43c961aafc237'
+            '756c5498eefac1d2e251171682b708137217fa71f37f5d921cba3d29ed7019e8'
+            '89253ec5d7eac50d7b1450d2acc0145d7dd242f05394f5944723af58f55bdec5'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
@@ -43,8 +39,8 @@ prepare() {
     gzip -9 > "${pkgname}.profile-${pkgver}.gz"
 
   # Fix dependencies path
-  ln -sf "dbeaver-common-release_${pkgver//./_}" dbeaver-common
-  ln -sf "dbeaver-jdbc-libsql-release_${pkgver//./_}" dbeaver-jdbc-libsql
+  ln -sf "dbeaver-common-${pkgver}" dbeaver-common
+  ln -sf "dbeaver-jdbc-libsql-${pkgver}" dbeaver-jdbc-libsql
   ln -sf "datadam-api-${_DATADAM_API_COMMIT_ID}" datadam-api
 
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -58,14 +54,8 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
   pushd "product/aggregate"
-  mvn --batch-mode -Pproduct-dbeaver-ce,product-dbeaver-eclipse-ce -Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -T 1C package
+  mvn --batch-mode -Pproduct-dbeaver-ce,product-dbeaver-eclipse-ce -Djdk.xml.maxGeneralEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -Dmaven.resolver.validation=MILD -T 1C package
   popd
-  # Add missing dependency org.apache.commons.commons-compress
-  install -m 644 "${srcdir}/commons-compress-1.28.0.jar" \
-    "product/repositories/org.jkiss.dbeaver.ce.repository/target/repository/plugins/org.apache.commons.commons-compress_1.28.0.jar"
-  # Add missing dependency org.apache.commons.lang3
-  install -m 644 "${srcdir}/commons-lang3-3.19.0.jar" \
-    "product/repositories/org.jkiss.dbeaver.ce.repository/target/repository/plugins/org.apache.commons.lang3_3.19.0.jar"
 }
 
 package() {
@@ -81,7 +71,12 @@ package() {
   cd "target/products/org.jkiss.dbeaver.core.product/linux/gtk/${CARCH}"
 
   # Removed different architectures libraries
-  for _dir in openbsd-x86-64 sunos-sparc sunos-sparcv9 sunos-x86 sunos-x86-64 \
+  for _dir in aix-ppc aix-ppc64 darwin-aarch64 darwin-x86-64 \
+    dragonflybsd-x86-64 freebsd-aarch64 freebsd-x86 freebsd-x86-64 \
+    linux-aarch64 linux-arm linux-armel linux-loongarch64 linux-mips64el \
+    linux-ppc linux-ppc64le linux-riscv64 linux-s390x linux-x86 \
+    openbsd-x86-64 \
+    sunos-sparc sunos-sparcv9 sunos-x86 sunos-x86-64 \
     win32 win32-aarch64 win32-x86 win32-x86-64
   do
     rm -r "dbeaver/plugins/com.sun.jna_5.19.1.v20260612-1000/com/sun/jna/${_dir}"
@@ -140,11 +135,36 @@ package() {
 
   # Add extra plugins
   cd "${srcdir}/${pkgname}-${pkgver}/product/repositories/org.jkiss.dbeaver.ce.repository/target/repository"
+  _install_plugin "dbeaver-plugin-apache-poi" "org.apache.commons.commons-collections4"
   _install_plugin "dbeaver-plugin-apache-poi" "org.apache.commons.commons-compress"
+  _install_plugin "dbeaver-plugin-apache-poi" "org.apache.commons.commons-io"
   _install_plugin "dbeaver-plugin-apache-poi" "org.apache.commons.lang3"
+  _install_plugin "dbeaver-plugin-apache-poi" "org.apache.commons.text"
   _install_plugin "dbeaver-plugin-apache-poi" "org.jkiss.bundle.apache.poi"
   _install_plugin "dbeaver-plugin-office" "org.jkiss.dbeaver.data.office"
   _install_plugin "dbeaver-plugin-office" "org.jkiss.dbeaver.data.office.ui"
+  _install_plugin "dbeaver-plugin-wmi" "org.jkiss.dbeaver.ext.wmi"
+  _install_plugin "dbeaver-plugin-ssh" "org.jkiss.bundle.sshj"
+  _install_plugin "dbeaver-plugin-ssh" "org.apache.sshd.osgi"
+  _install_plugin "dbeaver-plugin-ssh" "org.apache.sshd.sftp"
+  _install_plugin "dbeaver-plugin-git" "org.eclipse.egit"
+  _install_plugin "dbeaver-plugin-git" "org.eclipse.egit.core"
+  _install_plugin "dbeaver-plugin-git" "org.eclipse.egit.doc"
+  _install_plugin "dbeaver-plugin-git" "org.eclipse.egit.ui"
+  _install_plugin "dbeaver-plugin-git" "org.eclipse.jgit"
+  _install_plugin "dbeaver-plugin-git" "org.eclipse.jgit.archive"
+  _install_plugin "dbeaver-plugin-git" "org.eclipse.jgit.gpg.bc"
+  _install_plugin "dbeaver-plugin-git" "org.eclipse.jgit.http.apache"
+  _install_plugin "dbeaver-plugin-git" "org.eclipse.jgit.ssh.apache.agent"
+  _install_plugin "dbeaver-plugin-git" "org.eclipse.jgit.ssh.apache"
+  _install_plugin "dbeaver-plugin-git" "org.jkiss.dbeaver.team.git.ui"
+  _install_plugin "dbeaver-plugin-javaewah" "com.googlecode.javaewah.JavaEWAH"
+  _install_plugin "dbeaver-plugin-other" "jcl.over.slf4j"
+  _install_plugin "dbeaver-plugin-other" "org.apache.httpcomponents.httpclient"
+  _install_plugin "dbeaver-plugin-other" "org.apache.httpcomponents.httpcore"
+  _install_plugin "dbeaver-plugin-other" "org.jkiss.bundle.gis"
+  _install_plugin "dbeaver-plugin-other" "org.jkiss.bundle.jfreechart"
+  _install_plugin "dbeaver-plugin-other" "org.jkiss.dbeaver.ui.app.eclipse"
 }
 
 _install_plugin() {
